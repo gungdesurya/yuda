@@ -1,0 +1,116 @@
+body {
+  background-color: #eceff1;
+}
+
+nav .brand-logo {
+  margin: 0 16px;
+}
+
+a {
+  color: #f4511e;
+}
+
+.row {
+  margin-bottom: 0 !important;
+}
+
+.dropdown-content {
+  width: 200px !important;
+}
+
+.dropdown-content a {
+  color: #f4511e !important;
+}
+
+.chipslist {
+  margin: 0 -4px 0;
+}
+
+.chipslist .chip {
+  background-color: white;
+  padding: 0px 18px;
+  border-radius: 32px;
+  margin: 2px 2px;
+  display: inline-block;
+  font-size: 12px;
+  height: 28px;
+  line-height: 24px;
+}
+
+.home-container {
+  background-image: url("../images/undraw_work_time_lhoj.svg");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 100%;
+  height: 100vh;
+}
+
+.home-search-form {
+  margin: 30vh auto 0 auto;
+  max-width: 640px;
+}
+
+.lowongan-list .card-content {
+  padding: 16px;
+  border-bottom: 1px solid #bbb;
+}
+
+.lowongan-list .card-content .card-title {
+  font-size: 18px !important;
+  font-weight: 600;
+  margin-bottom: 0 !important;
+}
+
+.lowongan-list .card-content .perusahaan,
+.lowongan-list .card-content .pengalaman {
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: 500;
+}
+
+.lowongan-list .card-content .pengalaman {
+  font-style: italic;
+  margin-bottom: 8px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.lowongan-detail .gambar-perusahaan {
+  width: 100%;
+}
+
+.lowongan-detail .card-title {
+  font-size: 24px !important;
+  margin-bottom: 0 !important;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.lowongan-detail .perusahaan {
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.lowongan-detail .label-section {
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 500;
+  margin: 8px 0;
+}
+
+.lowongan-detail .deskripsi {
+  margin-bottom: 16px;
+}
+
+.lowongan-detail .side-detail {
+  padding: 16px;
+}
+
+.lowongan-detail b {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.login-form {
+  margin: 30vh auto 0 auto;
+  max-width: 360px;
+}
+/*# sourceMappingURL=styles.css.map */
