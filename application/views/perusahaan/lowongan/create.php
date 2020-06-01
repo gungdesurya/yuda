@@ -13,24 +13,14 @@
 
     <div id="test1" class="col s12" style="padding: 24px">
       <form class="row" id="form1">
-        <div class="input-field col s12 m6">
-          <input id="nama_perusahaan" type="text" name="nama_perusahaan" required value="Perusahaan ABC">
-          <label for="nama_perusahaan">Nama Perusahaan</label>
+        <div class="input-field col s12">
+          <input id="nama_loker" type="text" name="nama_loker" required value="Fullstuck Developer">
+          <label for="nama_loker">nama Lowongan Kerja</label>
         </div>
 
-        <div class="input-field col s12 m6">
-          <input id="email" type="email" name="email" required value="abc@gmail.com">
-          <label for="email">Email</label>
-        </div>
-
-        <div class="input-field col s6">
-          <input id="password" type="password" name="password" required value="123123">
-          <label for="password">Password</label>
-        </div>
-
-        <div class="input-field col s6">
-          <input id="confirm_password" type="password" name="confirm_password" required value="123123">
-          <label for="confirm_password">Ulangi Password</label>
+        <div class="input-field col s12">
+          <textarea id="deskripsi" name="deskripsi" class="materialize-textarea" required>Deskripsi Lowongan</textarea>
+          <label for="deskripsi">Deskripsi</label>
         </div>
 
         <div class="input-field col s12">
@@ -39,62 +29,59 @@
         </div>
 
         <div class="input-field col s12 m4">
-          <input id="website" type="text" name="website" required value="abc.com">
-          <label for="website">Website</label>
-        </div>
-
-        <div class="input-field col s12 m4">
-          <select name="bidang_perusahaan" id="bidang_perusahaan">
-            <option value="1" selected>Instansi / Pemerintah / BUMN</option>
-            <option value="2">Swasta Lokal</option>
-            <option value="3">Swasta Asing</option>
+          <select name="pendidikan" id="pendidikan">
+            <option value="1" selected>SD</option>
+            <option value="2">SMP</option>
+            <option value="3">SMA</option>
           </select>
-          <label for="bidang_perusahaan">Jenis Penyedia Kerja</label>
-        </div>
-
-        <div class="col s12 m4">
-          <label class="custom-file-label" for="customFile">Logo Perusahaan</label>
-          <input type="file" class="custom-file-input" id="customFile">
-        </div>
-
-        <div class="input-field col s12 m8">
-          <textarea id="alamat" name="alamat" class="materialize-textarea" required>Jalan Blambangan</textarea>
-          <label for="alamat">Alamat</label>
+          <label for="bidang_perusahaan">Pendidikan</label>
         </div>
 
         <div class="input-field col s12 m4">
-          <input id="kode_pos" type="number" name="kode_pos" required value="08123">
-          <label for="kode_pos">Kode Pos</label>
+          <select name="jurusan" id="jurusan">
+            <option value="1" selected>SD</option>
+            <option value="2">SMP</option>
+            <option value="3">SMA</option>
+          </select>
+          <label for="bidang_perusahaan">Jurusan</label>
+        </div>
+
+        <div class="input-field col s12 m4">
+          <select name="kategori_pekerjaan" id="kategori_pekerjaan">
+            <option value="1" selected>SD</option>
+            <option value="2">SMP</option>
+            <option value="3">SMA</option>
+          </select>
+          <label for="bidang_perusahaan">Kategori</label>
         </div>
 
         <div class="input-field col s12 m6">
-          <input id="provinsi" type="text" name="provinsi" required value="Bali">
-          <label for="provinsi">Provinsi</label>
+          <select name="range_gaji" id="range_gaji">
+            <option value="1" selected>SD</option>
+            <option value="2">SMP</option>
+            <option value="3">SMA</option>
+          </select>
+          <label for="bidang_perusahaan">Range Gaji</label>
         </div>
 
         <div class="input-field col s12 m6">
-          <input id="kabupaten" type="text" name="kabupaten" required value="Badung">
-          <label for="kabupaten">Kabupaten</label>
+          <input id="pengalaman_kerja" type="number" name="pengalaman_kerja" required value="1">
+          <label for="pengalaman_kerja">Pengalaman Kerja (Tahun)</label>
         </div>
 
-        <div class="input-field col s12 m3">
-          <input id="no_hp" type="text" name="no_hp" required value="081234567">
-          <label for="no_hp">Nomor HP</label>
-        </div>
+        <div class="col s12 form-group">
+          <div>Keterampilan</div>
+          <div class="row">
+            <?php foreach ($pendidikanNonFormal as $i => $item) : ?>
+              <div class="col s12 m3">
+                <label>
+                  <input name="pendidikan_non_formal[<?= $i ?>]" class="filled-in" type="checkbox" value="<?= $item->id ?>" />
+                  <span><?= $item->nama_pendidikan ?></span>
+                </label>
+              </div>
+            <?php endforeach ?>
 
-        <div class="input-field col s12 m3">
-          <input id="no_fax" type="text" name="no_fax" required value="123124123">
-          <label for="no_fax">Nomor Fax</label>
-        </div>
-
-        <div class="input-field col s12 m3">
-          <input id="nama_kontak" type="text" name="nama_kontak" value="Budi">
-          <label for="nama_kontak">Nama Kontak Person</label>
-        </div>
-
-        <div class="input-field col s12 m3">
-          <input id="jabatan_perusahaan" type="text" name="jabatan_perusahaan" value="Resepsionis">
-          <label for="jabatan_perusahaan">Jabatan di Perusahaan</label>
+          </div>
         </div>
 
         <div class="col s12 right-align">

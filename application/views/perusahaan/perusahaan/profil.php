@@ -42,4 +42,33 @@
 
     </div>
   </div>
-</div>
+  <br>
+
+  <div class="row">
+    <div class="col s6">
+      <h5>Lowongan Anda</h5>
+    </div>
+    <div class="col s6 right-align">
+      <a href="<?= site_url('perusahaan-s/Lowongan/create') ?>" class="btn deep-purple">Buat Lowongan</a>
+    </div>
+  </div>
+  <div class="lowongan-list card">
+    <div class="card-content">
+      <div class="row">
+        <div class="col s4 m2">
+          <img class="gambar-perusahaan" src="<?= site_url('/assets/images/person_6.jpg') ?>" style="width: 100%">
+        </div>
+        <div class="col s8 m10">
+          <a class="card-title" href="<?= site_url('lowongan/detail') ?>">Restaurant Team Member - Crew</a>
+          <div class="perusahaan"><a href="<?= site_url('perusahaan/detail') ?>">PT. Perusahaan</a></div>
+          <div class="pengalaman">Min Pengalaman: 1 Tahun</div>
+
+          <div class="chipslist">
+            <div class="chip deep-purple darken-1 white-text">S1</div>
+            <div class="chip deep-purple darken-1 white-text">Ilmu Komputer</div>
+            <div class="chip deep-purple darken-1 white-text">Administrasi</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

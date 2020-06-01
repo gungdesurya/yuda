@@ -5,15 +5,21 @@ class Perusahaan extends CI_Controller
 {
   public function profil()
   {
-    $this->load->view('header');
-    $this->load->view('perusahaan/perusahaan/profil');
+    $data['isLoggedIn'] = $this->session->userdata('isLoggedIn');
+    if (!$data['isLoggedIn']) redirect(base_url() . 'Home', 'refresh');
+
+    $this->load->view('header', $data);
+    $this->load->view('perusahaan/perusahaan/profil', $data);
     $this->load->view('footer');
   }
 
   public function edit()
   {
-    $this->load->view('header');
-    $this->load->view('perusahaan/perusahaan/edit');
+    $data['isLoggedIn'] = $this->session->userdata('isLoggedIn');
+    if (!$data['isLoggedIn']) redirect(base_url() . 'Home', 'refresh');
+
+    $this->load->view('header', $data);
+    $this->load->view('perusahaan/perusahaan/edit', $data);
     $this->load->view('footer');
   }
 }

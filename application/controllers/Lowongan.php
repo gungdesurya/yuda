@@ -5,15 +5,19 @@ class Lowongan extends CI_Controller
 {
   public function index()
   {
-    $this->load->view('header');
-    $this->load->view('lowongan-list');
+    $data['isLoggedIn'] = $this->session->userdata('isLoggedIn');
+
+    $this->load->view('header', $data);
+    $this->load->view('lowongan-list', $data);
     $this->load->view('footer');
   }
 
   public function detail()
   {
-    $this->load->view('header');
-    $this->load->view('lowongan');
+    $data['isLoggedIn'] = $this->session->userdata('isLoggedIn');
+
+    $this->load->view('header', $data);
+    $this->load->view('lowongan', $data);
     $this->load->view('footer');
   }
 }

@@ -5,8 +5,11 @@ class Dashboard extends CI_Controller
 {
   public function index()
   {
-    $this->load->view('header');
-    $this->load->view('pelamar/dashboard');
+    $data['isLoggedIn'] = $this->session->userdata('isLoggedIn');
+    if (!$data['isLoggedIn']) redirect(base_url() . 'Home', 'refresh');
+
+    $this->load->view('header', $data);
+    $this->load->view('pelamar/dashboard', $data);
     $this->load->view('footer');
   }
 }

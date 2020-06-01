@@ -2,7 +2,7 @@
   <div class="card login-form">
     <div class="card-content">
       <h5>Login Pelamar</h5>
-      <form action="<?= site_url('pelamar/dashboard') ?>" method="post">
+      <form action="<?= site_url('Login/submitPelamar') ?>" method="post">
         <div class="input-field">
           <input id="email" type="email" name="email">
           <label for="email">Email</label>

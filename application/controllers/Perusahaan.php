@@ -5,8 +5,10 @@ class Perusahaan extends CI_Controller
 {
   public function detail()
   {
-    $this->load->view('header');
-    $this->load->view('perusahaan');
+    $data['isLoggedIn'] = $this->session->userdata('isLoggedIn');
+
+    $this->load->view('header', $data);
+    $this->load->view('perusahaan', $data);
     $this->load->view('footer');
   }
 }

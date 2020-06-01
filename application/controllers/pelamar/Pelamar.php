@@ -5,8 +5,11 @@ class Pelamar extends CI_Controller
 {
   public function edit()
   {
-    $this->load->view('header');
-    $this->load->view('edit');
+    $data['isLoggedIn'] = $this->session->userdata('isLoggedIn');
+    if (!$data['isLoggedIn']) redirect(base_url() . 'Home', 'refresh');
+
+    $this->load->view('header', $data);
+    $this->load->view('edit', $data);
     $this->load->view('footer');
   }
 }

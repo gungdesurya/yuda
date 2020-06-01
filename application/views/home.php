@@ -5,7 +5,7 @@
       <form action="<?= site_url('lowongan') ?>" id="search-form" name="search-form">
         <div class="row" style="margin-bottom: 0">
           <div class="input-field col s6 ">
-            <select>
+            <select name="kategori">
               <option value="" disabled selected>Choose your option</option>
               <option value="1">Option 1</option>
               <option value="2">Option 2</option>
