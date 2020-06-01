@@ -68,10 +68,14 @@ a {
   font-weight: 500;
 }
 
-.lowongan-list .card-content .pengalaman {
+.lowongan-list .card-content .pengalaman,
+.lowongan-list .card-content .gaji {
   font-style: italic;
-  margin-bottom: 8px;
   color: rgba(0, 0, 0, 0.6);
+}
+
+.lowongan-list .card-content .gaji {
+  margin-bottom: 8px;
 }
 
 .lowongan-detail .gambar-perusahaan {
