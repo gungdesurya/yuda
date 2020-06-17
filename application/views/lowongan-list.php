@@ -29,61 +29,26 @@
 
   <div class="lowongan-list card">
 
-    <div class="card-content">
-      <div class="row">
-        <div class="col s4 m2">
-          <img class="gambar-perusahaan" src="<?= site_url('/assets/images/person_6.jpg') ?>" style="width: 100%">
-        </div>
-        <div class="col s8 m10">
-          <a class="card-title" href="<?= site_url('lowongan/detail') ?>">Restaurant Team Member - Crew</a>
-          <div class="perusahaan"><a href="<?= site_url('perusahaan/detail') ?>">PT. Perusahaan</a></div>
-          <div class="pengalaman">Min Pengalaman: 1 Tahun</div>
+    <?php foreach ($lowongan as $l) : ?>
+      <div class="card-content">
+        <div class="row">
+          <div class="col s4 m2">
+            <img class="gambar-perusahaan" src="<?= site_url('/assets/images/person_6.jpg') ?>" style="width: 100%">
+          </div>
+          <div class="col s8 m10">
+            <a class="card-title" href="<?= site_url('lowongan/detail') ?>"><?= $l->nama_loker ?></a>
+            <div class="perusahaan"><a href="<?= site_url('perusahaan/detail') ?>"><?= $l->nama_perusahaan ?></a></div>
+            <div class="pengalaman">Range Gaji: <?= $l->range_gaji ?></div>
+            <div class="pengalaman">Min Pengalaman: <?= $l->pengalaman_kerja ?> Tahun</div>
 
-          <div class="chipslist">
-            <div class="chip deep-purple darken-1 white-text">S1</div>
-            <div class="chip deep-purple darken-1 white-text">Ilmu Komputer</div>
-            <div class="chip deep-purple darken-1 white-text">Administrasi</div>
+            <div class="chipslist">
+              <div class="chip deep-purple darken-1 white-text">S1</div>
+              <div class="chip deep-purple darken-1 white-text"><?= $l->pendidikan ?></div>
+              <div class="chip deep-purple darken-1 white-text"><?= $l->jurusan ?></div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="card-content">
-      <div class="row">
-        <div class="col s4 m2">
-          <img class="gambar-perusahaan" src="<?= site_url('/assets/images/person_6.jpg') ?>" style="width: 100%">
-        </div>
-        <div class="col s8 m10">
-          <a class="card-title" href="<?= site_url('lowongan/detail') ?>">Restaurant Team Member - Crew</a>
-          <div class="perusahaan"><a href="<?= site_url('perusahaan/detail') ?>">PT. Perusahaan</a></div>
-          <div class="pengalaman">Min Pengalaman: 1 Tahun</div>
-
-          <div class="chipslist">
-            <div class="chip deep-purple darken-1 white-text">S1</div>
-            <div class="chip deep-purple darken-1 white-text">Ilmu Komputer</div>
-            <div class="chip deep-purple darken-1 white-text">Administrasi</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card-content">
-      <div class="row">
-        <div class="col s4 m2">
-          <img class="gambar-perusahaan" src="<?= site_url('/assets/images/person_6.jpg') ?>" style="width: 100%">
-        </div>
-        <div class="col s8 m10">
-          <a class="card-title" href="<?= site_url('lowongan/detail') ?>">Restaurant Team Member - Crew</a>
-          <div class="perusahaan"><a href="<?= site_url('perusahaan/detail') ?>">PT. Perusahaan</a></div>
-          <div class="pengalaman">Min Pengalaman: 1 Tahun</div>
-
-          <div class="chipslist">
-            <div class="chip deep-purple darken-1 white-text">S1</div>
-            <div class="chip deep-purple darken-1 white-text">Ilmu Komputer</div>
-            <div class="chip deep-purple darken-1 white-text">Administrasi</div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <?php endforeach; ?>
   </div>
 </div>

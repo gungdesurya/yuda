@@ -28,4 +28,9 @@ class MPerusahaan extends CI_Model
   {
     return $this->db->get_where('perusahaan', ['email' => $data['email'], 'password' => $data['password']])->row();
   }
+
+  public function getOne($id)
+  {
+    return $this->db->where('id', $id)->get('perusahaan')->row();
+  }
 }

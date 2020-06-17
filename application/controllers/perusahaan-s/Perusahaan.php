@@ -7,6 +7,7 @@ class Perusahaan extends CI_Controller
   {
     parent::__construct();
     $this->load->model('MLowongan');
+    $this->load->model('MPerusahaan');
   }
 
   public function profil()
@@ -15,6 +16,7 @@ class Perusahaan extends CI_Controller
     if (!$data['isLoggedIn']) redirect(base_url() . 'Home', 'refresh');
 
     $data['lowongan'] = $this->MLowongan->getLowonganPerusahaan($this->session->userdata('id'));
+    $data['perusahaan'] = $this->MPerusahaan->getOne($this->session->userdata('id'));
 
     $this->load->view('header', $data);
     $this->load->view('perusahaan/perusahaan/profil', $data);

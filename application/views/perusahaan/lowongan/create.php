@@ -16,36 +16,34 @@
 
         <div class="input-field col s12 m4">
           <select name="pendidikan" id="pendidikan">
-            <option value="1" selected>SD</option>
-            <option value="2">SMP</option>
-            <option value="3">SMA</option>
+            <option value="SD" selected>SD</option>
+            <option value="SMP">SMP</option>
+            <option value="SMA/SMK">SMA/SMK</option>
+            <option value="S1">S1</option>
           </select>
           <label for="bidang_perusahaan">Pendidikan</label>
         </div>
 
         <div class="input-field col s12 m4">
-          <select name="jurusan" id="jurusan">
-            <option value="1" selected>SD</option>
-            <option value="2">SMP</option>
-            <option value="3">SMA</option>
-          </select>
-          <label for="bidang_perusahaan">Jurusan</label>
+          <input id="jurusan" type="text" name="jurusan" required value="Ilmu Komputer" disabled>
+          <label for="jurusan">Jurusan</label>
         </div>
 
         <div class="input-field col s12 m4">
           <select name="kategori_pekerjaan" id="kategori_pekerjaan">
-            <option value="1" selected>SD</option>
-            <option value="2">SMP</option>
-            <option value="3">SMA</option>
+            <?php foreach ($kategori as $i => $k) : ?>
+              <option value="<?= $k->id ?>"><?= $k->kategori ?></option>
+            <?php endforeach ?>
           </select>
           <label for="bidang_perusahaan">Kategori</label>
         </div>
 
         <div class="input-field col s12 m6">
           <select name="range_gaji" id="range_gaji">
-            <option value="1" selected>SD</option>
-            <option value="2">SMP</option>
-            <option value="3">SMA</option>
+            <option value="0 - 1000000" selected>Rp. 0 - Rp. 1.000.000</option>
+            <option value="1000000 - 2500000">Rp. 1.000.000 - Rp. 2.500.000</option>
+            <option value="2500000 - 5000000">Rp. 2.500.000 - Rp. 5.000.000</option>
+            <option value="5000000 - 10000000">Rp. 5.000.000 - Rp. 10.000.000</option>
           </select>
           <label for="bidang_perusahaan">Range Gaji</label>
         </div>
@@ -61,7 +59,7 @@
             <?php foreach ($pendidikanNonFormal as $i => $item) : ?>
               <div class="col s12 m3">
                 <label>
-                  <input name="pendidikan_non_formal[<?= $i ?>]" class="filled-in" type="checkbox" value="<?= $item->id ?>" />
+                  <input name="keterampilan[<?= $i ?>]" class="filled-in" type="checkbox" value="<?= $item->id ?>" />
                   <span><?= $item->nama_pendidikan ?></span>
                 </label>
               </div>
@@ -71,9 +69,19 @@
         </div>
 
         <div class="col s12 right-align">
-          <input type="submit" value="Next" class="btn deep-purple">
+          <input type="submit" value="Tambah" class="btn deep-purple">
         </div>
       </form>
     </div>
 
   </div>
+
+  <script>
+    $(document).ready(function() {
+      $('#pendidikan').change(function(event) {
+        if (event.target.value == 'S1') $('#jurusan').prop('disabled', false)
+        else $('#jurusan').prop('disabled', true)
+      });
+
+    });
+  </script>

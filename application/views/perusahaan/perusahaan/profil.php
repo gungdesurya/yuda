@@ -10,9 +10,9 @@
               <img class="gambar-perusahaan" src="<?= site_url('/assets/images/person_6.jpg') ?>" alt="">
             </div>
             <div class="col s12 m9">
-              <span class="card-title">PT Perusahaan</span>
-              <div class="perusahaan">Alamat: Jalan ABC Nomor 123, Badung, Bali</div>
-              <div class="perusahaan">No HP: 0812345678 (Andi)</div>
+              <span class="card-title"><?= $perusahaan->nama_perusahaan ?></span>
+              <div class="perusahaan">Alamat: <?= $perusahaan->alamat ?></div>
+              <div class="perusahaan">No HP: <?= $perusahaan->no_hp ?> (<?= $perusahaan->nama_kontak ?>)</div>
               <div class="right-align">
                 <a href="<?= site_url('perusahaan-s/perusahaan/edit') ?>" class="btn deep-purple">Edit Profil</a>
               </div>
@@ -20,9 +20,7 @@
           </div>
 
           <div class="label-section">Tentang Kami</div>
-          <div class="deskripsi">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-          </div>
+          <div class="deskripsi"><?= $perusahaan->deskripsi ?></div>
 
           <div class="divider"></div>
           <div class="label-section">Izin Perusahaan</div>
@@ -59,18 +57,30 @@
           <div class="col s4 m2">
             <img class="gambar-perusahaan" src="<?= site_url('/assets/images/person_6.jpg') ?>" style="width: 100%">
           </div>
-          <div class="col s8 m10">
-            <a class="card-title" href="<?= site_url('lowongan/detail') ?>"><?= $l->nama_loker ?></a>
+          <div class="col s6 m8">
+            <a class="card-title" href="<?= site_url('lowongan/detail/' . $l->id) ?>"><?= $l->nama_loker ?></a>
             <div class="pengalaman">Min Pengalaman: <?= $l->pengalaman_kerja ?> Tahun</div>
             <div class="gaji">Gaji Rp. <?= $l->range_gaji ?></div>
 
             <div class="chipslist">
               <div class="chip deep-purple darken-1 white-text"><?= $l->pendidikan ?></div>
               <div class="chip deep-purple darken-1 white-text">Ilmu Komputer</div>
-              <div class="chip deep-purple darken-1 white-text">Administrasi</div>
+              <div class="chip deep-purple darken-1 white-text"><?= $l->kategori ?></div>
             </div>
+          </div>
+          <div class="col s2 right-align">
+            <a class="btn deep-purple" href="<?= site_url('perusahaan-s/Lowongan/edit/' . $l->id) ?>">Edit</a>
+            <br><br>
+            <button class="btn red" onclick="onDelete(<?= $l->id ?>)">Hapus</button>
           </div>
         </div>
       </div>
     <?php endforeach ?>
   </div>
+
+  <script>
+    function onDelete(id) {
+      const confirms = confirm("Hapus Lowongan ini?");
+      if (confirms) window.location = '<?= site_url('perusahaan-s/Lowongan/delete/') ?>' + id
+    }
+  </script>
