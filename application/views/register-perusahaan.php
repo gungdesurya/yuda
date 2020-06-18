@@ -158,19 +158,14 @@
   </div>
 
   <script>
-    var form = {}
-    var form2 = new FormData()
+    var form = new FormData()
 
     $(document).ready(function() {
       $('#form1').submit(function(event) {
         event.preventDefault();
 
         let formdata = new FormData(this);
-        for (var pair of formdata.entries()) {
-          form[pair[0]] = pair[1]
-          form2.append(pair[0], pair[1]);
-        }
-
+        for (var pair of formdata.entries()) form.append(pair[0], pair[1]);
 
         $('#menu2').removeClass('disabled')
         let instance = M.Tabs.init($('#tabs'))[0]
@@ -182,16 +177,12 @@
         event.preventDefault();
 
         let formdata = new FormData(this);
-        for (var pair of formdata.entries()) {
-          form[pair[0]] = pair[1]
-          form2.append(pair[0], pair[1]);
-        }
+        for (var pair of formdata.entries()) form.append(pair[0], pair[1]);
 
         $.ajax({
           url: '<?= site_url('Daftar/submitPerusahaan') ?>',
           type: 'POST',
-          data: form2,
-          // dataType: 'text',
+          data: form,
           dataType: 'json',
           cache: false,
           contentType: false,

@@ -11,6 +11,7 @@ class MPelamar extends CI_Model
     $param->email = $data['email'];
     $param->password = md5($data['password']);
     $param->taggallahir = $data['tanggal_lahir'];
+    $param->foto = $data['foto'];
     $param->jk = $data['jk'];
     $param->alamat = $data['alamat'];
     $param->jabatan_ingin = $data['spesialisasi'];
@@ -23,6 +24,10 @@ class MPelamar extends CI_Model
     // $param->statsus_bekerja = 
     $param->rangegaji = $data['gaji_diinginkan'];
     $param->agama = $data['agama'];
+    $param->pendidikan = json_encode(["SD", "SMP", "SMA/SMK", "S1"]);
+    $param->jurusan = json_encode($data['jurusan']);
+    $param->tahun = json_encode($data['tahun']);
+    $param->ijazah = json_encode($data['berkas']);
     // $param->kewarganegaraan =
     // $param->pekerjaan_sekarang = 
     // $param->pekerja_status

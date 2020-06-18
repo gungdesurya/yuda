@@ -36,7 +36,7 @@
           <div class=""></div>
           <label for="foto">Foto</label>
           <div class="input-field">
-            <input id="foto" type="file" name="foto">
+            <input id="foto" type="file" name="foto" required>
           </div>
           <br>
 
@@ -79,36 +79,12 @@
                 <span>Perempuan</span>
               </label>
             </div>
+            <br><br>
           </div>
 
-          <div class="input-field col s12 m3">
-            <input id="provinsi" type="text" name="provinsi" required value="Bali">
-            <label for="provinsi">Provinsi</label>
-          </div>
-
-          <div class="input-field col s12 m3">
-            <input id="kabupaten" type="text" name="kabupaten" required value="Denpasar">
-            <label for="kabupaten">Kabupaten</label>
-          </div>
-
-          <div class="input-field col s12 m3">
-            <input id="kecamatan" type="text" name="kecamatan" required value="Denpasar">
-            <label for="kecamatan">Kecamatan</label>
-          </div>
-
-          <div class="input-field col s12 m3">
-            <input id="kelurahan" type="text" name="kelurahan" required value="Denpasar">
-            <label for="kelurahan">Kelurahan</label>
-          </div>
-
-          <div class="input-field col s12 m8">
+          <div class="input-field col s12 m12">
             <textarea id="alamat" name="alamat" class="materialize-textarea" required>Jalan Blambangan Gg 1 No 1</textarea>
             <label for="alamat">Alamat</label>
-          </div>
-
-          <div class="input-field col s12 m4">
-            <input id="kode_pos" type="number" name="kode_pos" required value="80132">
-            <label for="kode_pos">Kode Pos</label>
           </div>
 
           <div class="col s12 right-align">
@@ -139,7 +115,7 @@
             <div class="col s12 m4">
               <label for="file0">Berkas</label>
               <div class="input-field">
-                <input id="file0" type="file" name="berkas[0]">
+                <input id="file0" type="file" name="berkas[0]" required>
               </div>
 
             </div>
@@ -163,7 +139,7 @@
             <div class="col s12 m4">
               <label for="file1">Berkas</label>
               <div class="input-field">
-                <input id="file1" type="file" name="berkas[1]">
+                <input id="file1" type="file" name="berkas[1]" required>
               </div>
             </div>
 
@@ -187,7 +163,7 @@
             <div class="col s12 m4">
               <label for="file2">Ijazah</label>
               <div class="input-field">
-                <input id="file2" type="file" name="berkas[2]">
+                <input id="file2" type="file" name="berkas[2]" required>
               </div>
             </div>
 
@@ -211,7 +187,7 @@
             <div class="col s12 m4">
               <label for="file3">Ijazah</label>
               <div class="input-field">
-                <input id="file3" type="file" name="berkas[3]">
+                <input id="file3" type="file" name="berkas[3]" required>
               </div>
             </div>
 
@@ -302,16 +278,14 @@
 </div>
 
 <script>
-  var form = {}
+  var form = new FormData()
 
   $(document).ready(function() {
     $('#form1').submit(function(event) {
       event.preventDefault();
 
       let formdata = new FormData(this);
-      for (var pair of formdata.entries()) {
-        form[pair[0]] = pair[1]
-      }
+      for (var pair of formdata.entries()) form.append(pair[0], pair[1]);
 
       $('#menu2').removeClass('disabled')
       let instance = M.Tabs.init($('#tabs'))[0]
@@ -323,17 +297,7 @@
       event.preventDefault();
 
       let formdata = new FormData(this);
-      for (var pair of formdata.entries()) {
-        // form[pair[0]] = pair[1]
-        if (pair[0].endsWith(']')) {
-          let split = pair[0].split('[')
-
-          let idx = 0
-          if (!form[split[0]]) form[split[0]] = []
-          else idx = form[split[0]].length
-          form[split[0]][idx] = pair[1]
-        } else form[pair[0]] = pair[1]
-      }
+      for (var pair of formdata.entries()) form.append(pair[0], pair[1]);
 
       $('#menu3').removeClass('disabled')
       let instance = M.Tabs.init($('#tabs'))[0]
@@ -345,25 +309,7 @@
       event.preventDefault();
 
       let formdata = new FormData(this);
-      for (var pair of formdata.entries()) {
-        form[pair[0]] = pair[1]
-
-        // if (pair[0].endsWith(']')) {
-        //   let split = pair[0].split('[')
-        // console.log('split', split[0]);
-
-        // console.log(idx);
-
-
-        // let idx = 0
-        // if (!form[split[0]]) form[split[0]] = []
-        // else idx = form[split[0]].length
-        // form[split[0]][idx] = pair[1]
-        // console.log(form);
-
-
-        // } 
-      }
+      for (var pair of formdata.entries()) form.append(pair[0], pair[1]);
 
       $('#menu4').removeClass('disabled')
       let instance = M.Tabs.init($('#tabs'))[0]
@@ -375,25 +321,16 @@
       event.preventDefault();
 
       let formdata = new FormData(this);
-      for (var pair of formdata.entries()) {
-        form[pair[0]] = pair[1]
-      }
-
-      // delete form['berkas[0]']
-      // delete form['berkas[1]']
-      // delete form['berkas[2]']
-      // delete form['berkas[3]']
-      // delete form['jurusan[]']
-      // delete form['tahun[]']
-      delete form.foto
-      delete form.berkas
-
-      console.log(form);
+      for (var pair of formdata.entries()) form.append(pair[0], pair[1]);
 
       $.ajax({
         url: '<?= site_url('Daftar/submitPelamar') ?>',
         type: 'POST',
         data: form,
+        dataType: 'json',
+        cache: false,
+        contentType: false,
+        processData: false,
         success: function(res) {
           alert('Terdaftar sebagai pelamar!');
           window.location.href = "<?= site_url('pelamar/Dashboard') ?>";
