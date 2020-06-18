@@ -9,12 +9,18 @@ class Lowongan extends CI_Controller
     $this->load->model('MLowongan');
     $this->load->model('MPerusahaan');
     $this->load->model('MPendidikanNonFormal');
+    $this->load->model('MKategori');
   }
 
   public function index()
   {
     $data['isLoggedIn'] = $this->session->userdata('isLoggedIn');
-    $data['lowongan'] = $this->MLowongan->getLowongan();
+
+    $data['param'] = new stdClass();
+    $nama = $data['param']->nama = $this->input->get('nama');
+    $kategori = $data['param']->kategori = $this->input->get('kategori');
+    $data['lowongan'] = $this->MLowongan->getLowongan($nama, $kategori);
+    $data['kategori'] = $this->MKategori->get();
 
     $this->load->view('header', $data);
     $this->load->view('lowongan-list', $data);

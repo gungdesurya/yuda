@@ -62,9 +62,9 @@ class MLowongan extends CI_Model
   public function getLowongan($nama = '', $kategori = '')
   {
     $where = "nama_loker like '%$nama%'";
-    if ($kategori != '') $where += " AND jurusan = $kategori";
+    if ($kategori != '') $where .= " AND kategori_pekerjaan = $kategori";
     return $this->db
-      ->select('lowongan, perusahaan.nama_perusahaan, kategori.kategori')
+      ->select('lowongan.*, perusahaan.nama_perusahaan, kategori.kategori')
       ->where($where)
       ->join('perusahaan', 'perusahaan.id = lowongan.id_perusahaan')
       ->join('kategori', 'kategori.id = lowongan.kategori_pekerjaan')
