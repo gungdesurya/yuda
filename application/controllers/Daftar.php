@@ -47,13 +47,52 @@ class Daftar extends CI_Controller
 
   public function submitPerusahaan()
   {
+    $config['upload_path'] = "./uploads/logo";
+    $config['allowed_types'] = 'gif|jpg|png';
+    $config['encrypt_name'] = TRUE;
+
+    $this->load->library('upload');
+    $this->upload->initialize($config);
+
     $data = $this->input->post();
+    if ($this->upload->do_upload('logo')) {
+      $upload = $this->upload->data();
+      $data['logo'] = $upload['file_name'];
+    } else return false;
+
+    $config['upload_path'] = "./uploads/file_perusahaan";
+    $this->upload->initialize($config);
+    if ($this->upload->do_upload('akta_pendirian_perusahaan')) {
+      $upload = $this->upload->data();
+      $data['akta_pendirian_perusahaan'] = $upload['file_name'];
+    } else return false;
+
+    if ($this->upload->do_upload('siup')) {
+      $upload = $this->upload->data();
+      $data['siup'] = $upload['file_name'];
+    } else return false;
+
+    if ($this->upload->do_upload('tdp')) {
+      $upload = $this->upload->data();
+      $data['tdp'] = $upload['file_name'];
+    } else return false;
+
+    if ($this->upload->do_upload('situ')) {
+      $upload = $this->upload->data();
+      $data['situ'] = $upload['file_name'];
+    } else return false;
+
+    if ($this->upload->do_upload('izin_lainnya')) {
+      $upload = $this->upload->data();
+      $data['izin_lainnya'] = $upload['file_name'];
+    } else return false;
+
     $this->MPerusahaan->signup($data);
 
     $res = $this->db->get_where('perusahaan', ['email' => $data['email']])->row();
     $user['id'] = $res->id;
     $user['email'] = $data['email'];
-    $user['nama'] = $data['nama'];
+    $user['nama'] = $data['nama_perusahaan'];
     $user['tipe'] = 'perusahaan';
     $user['isLoggedIn'] = true;
     $this->session->set_userdata($user);

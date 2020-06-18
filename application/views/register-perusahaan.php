@@ -6,7 +6,7 @@
       <div class="col s12">
         <ul class="tabs" id="tabs">
           <li class="tab col s3" id="menu1"><a class="active deep-orange-text text-darken-1" href="#test1">Informasi Umum</a></li>
-          <li class="tab col s3 disabled" id="menu2"><a class="deep-orange-text text-darken-1" href="#test2">Izin Perusahaan</a></li>
+          <li class="tab col s3 disabled" id="menu2"><a class=" deep-orange-text text-darken-1" href="#test2">Izin Perusahaan</a></li>
         </ul>
       </div>
     </div>
@@ -54,7 +54,7 @@
 
         <div class="col s12 m4">
           <label class="custom-file-label" for="customFile">Logo Perusahaan</label>
-          <input type="file" class="custom-file-input" id="customFile">
+          <input type="file" class="custom-file-input" id="customFile" name="logo" required>
         </div>
 
         <div class="input-field col s12 m8">
@@ -105,28 +105,44 @@
 
     <div id="test2" class="col s12" style="padding: 24px">
       <form class="row" id="form2">
-        <div class="col s12 m4">
-          <label for="akta_perusahaan">Akta Pendirian Perusahaan</label>
-          <input type="file" id="akta_perusahaan">
+        <div class="col s12 m6">
+          <div>Akta Pendirian Perusahaan</div>
         </div>
-        <div class="col s12 m4">
-          <label for="siup">SIUP</label>
-          <input type="file" id="siup">
-        </div>
-
-        <div class="col s12 m4">
-          <label for="tdp">TDP</label>
-          <input type="file" id="tdp">
+        <div class="col s12 m6">
+          <input type="file" id="akta_perusahaan" name="akta_pendirian_perusahaan">
+          <br><br>
         </div>
 
-        <div class="col s12 m4">
-          <label for="situ">SITU</label>
-          <input type="file" id="situ">
+        <div class="col s12 m6">
+          <div>SIUP</div>
+        </div>
+        <div class="col s12 m6">
+          <input type="file" id="siup" name="siup">
+          <br><br>
         </div>
 
-        <div class="col s12 m4">
-          <label for="izin_lainnya">Izin Lainnya</label>
-          <input type="file" id="izin_lainnya">
+        <div class="col s12 m6">
+          <div>TDP</div>
+        </div>
+        <div class="col s12 m6">
+          <input type="file" id="tdp" name="tdp">
+          <br><br>
+        </div>
+
+        <div class="col s12 m6">
+          <div>SITU</div>
+        </div>
+        <div class="col s12 m6">
+          <input type="file" id="situ" name="situ">
+          <br><br>
+        </div>
+
+        <div class="col s12 m6">
+          <div>Izin Lainnya</div>
+        </div>
+        <div class="col s12 m6">
+          <input type="file" id="izin_lainnya" name="izin_lainnya">
+          <br><br>
         </div>
 
         <div class="col s6">
@@ -143,13 +159,18 @@
 
   <script>
     var form = {}
+    var form2 = new FormData()
 
     $(document).ready(function() {
       $('#form1').submit(function(event) {
         event.preventDefault();
 
         let formdata = new FormData(this);
-        for (var pair of formdata.entries()) form[pair[0]] = pair[1]
+        for (var pair of formdata.entries()) {
+          form[pair[0]] = pair[1]
+          form2.append(pair[0], pair[1]);
+        }
+
 
         $('#menu2').removeClass('disabled')
         let instance = M.Tabs.init($('#tabs'))[0]
@@ -160,13 +181,24 @@
       $('#form2').submit(function(event) {
         event.preventDefault();
 
+        let formdata = new FormData(this);
+        for (var pair of formdata.entries()) {
+          form[pair[0]] = pair[1]
+          form2.append(pair[0], pair[1]);
+        }
+
         $.ajax({
           url: '<?= site_url('Daftar/submitPerusahaan') ?>',
           type: 'POST',
-          data: form,
+          data: form2,
+          // dataType: 'text',
+          dataType: 'json',
+          cache: false,
+          contentType: false,
+          processData: false,
           success: function(res) {
             alert('Terdaftar sebagai perusahaan!');
-            window.location.href = "<?= site_url('perusahaan/Dashboard') ?>";
+            window.location.href = "<?= site_url('perusahaan-s/perusahaan/profil') ?>";
           },
           error: function() {
             alert("error occured");

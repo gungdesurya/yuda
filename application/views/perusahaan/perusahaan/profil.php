@@ -7,12 +7,11 @@
         <div class="col s12 m8">
           <div class="row">
             <div class="col s12 m3">
-              <img class="gambar-perusahaan" src="<?= site_url('/assets/images/person_6.jpg') ?>" alt="">
+              <img class="gambar-perusahaan" src="<?= site_url('/uploads/logo/' . $perusahaan->logo) ?>" alt="">
             </div>
             <div class="col s12 m9">
               <span class="card-title"><?= $perusahaan->nama_perusahaan ?></span>
-              <div class="perusahaan">Alamat: <?= $perusahaan->alamat ?></div>
-              <div class="perusahaan">No HP: <?= $perusahaan->no_hp ?> (<?= $perusahaan->nama_kontak ?>)</div>
+              <div class="perusahaan">Alamat: <?= "$perusahaan->alamat, $perusahaan->kabupaten, $perusahaan->provinsi ($perusahaan->kode_pos)" ?></div>
               <div class="right-align">
                 <a href="<?= site_url('perusahaan-s/perusahaan/edit') ?>" class="btn deep-purple">Edit Profil</a>
               </div>
@@ -24,17 +23,19 @@
 
           <div class="divider"></div>
           <div class="label-section">Izin Perusahaan</div>
-          <div class="perusahaan-detail">
-            <div class="label">SIUP: 02901902390</div>
-            <div class="pendidikan">TDP: 2091301923912</div>
-            <div class="jurusan">SITU: 102938128730129</div>
-            <div class="kategori">Izin Lainnya: 0980394802394</div>
-          </div>
+          <ul class="browser-default">
+            <li><a href="<?= site_url('uploads/file_perusahaan/' . $perusahaan->akta_pendirian_perusahaan) ?>" target="_blank">Akta Pendirian Perusahaan</a></li>
+            <li><a href="<?= site_url('uploads/file_perusahaan/' . $perusahaan->siup) ?>" target="_blank">SIUP</a></li>
+            <li><a href="<?= site_url('uploads/file_perusahaan/' . $perusahaan->tdp) ?>" target="_blank">TDP</a></li>
+            <li><a href="<?= site_url('uploads/file_perusahaan/' . $perusahaan->situ) ?>" target="_blank">SITU</a></li>
+            <li><a href="<?= site_url('uploads/file_perusahaan/' . $perusahaan->izin_lainnya) ?>" target="_blank">Izin Lainnya</a></li>
+          </ul>
         </div>
         <div class="col s12 m4 blue-grey lighten-5 side-detail">
           <div class="label-section">Informasi</div>
-          <div class="jurusan">Jabatan Perusahaan: Ilmu Komputer</div>
-          <div class="kategori">Kategori: Administrasi</div>
+          <div class="kategori">No HP: <?= $perusahaan->no_hp ?></div>
+          <div class="kategori">Nama Kontak: <?= $perusahaan->nama_kontak ?></div>
+          <div class="kategori">Jabatan: <?= $perusahaan->jabatan_perusahaan ?></div>
         </div>
       </div>
 
@@ -55,7 +56,7 @@
       <div class="card-content">
         <div class="row">
           <div class="col s4 m2">
-            <img class="gambar-perusahaan" src="<?= site_url('/assets/images/person_6.jpg') ?>" style="width: 100%">
+            <img class="gambar-perusahaan" src="<?= site_url('/uploads/logo/' . $perusahaan->logo) ?>" style="width: 100%">
           </div>
           <div class="col s6 m8">
             <a class="card-title" href="<?= site_url('lowongan/detail/' . $l->id) ?>"><?= $l->nama_loker ?></a>
@@ -64,7 +65,9 @@
 
             <div class="chipslist">
               <div class="chip deep-purple darken-1 white-text"><?= $l->pendidikan ?></div>
-              <div class="chip deep-purple darken-1 white-text">Ilmu Komputer</div>
+              <?php if ($l->jurusan) : ?>
+                <div class="chip deep-purple darken-1 white-text"><?= $l->jurusan ?></div>
+              <?php endif ?>
               <div class="chip deep-purple darken-1 white-text"><?= $l->kategori ?></div>
             </div>
           </div>
