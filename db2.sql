@@ -24,9 +24,27 @@ CREATE TABLE `kategori` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `kategori` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 /*Data for the table `kategori` */
+
+insert  into `kategori`(`id`,`kategori`) values 
+(1,'Administrasi'),
+(2,'Akunting'),
+(3,'Asuransi'),
+(4,'Customer Service'),
+(5,'Design'),
+(6,'Finance'),
+(7,'Engineering-Industri'),
+(8,'Perbankan'),
+(9,'Perhotelan'),
+(10,'Properti'),
+(11,'Security-Safety Control'),
+(12,'TI (Softwere)'),
+(13,'TI (Webmaster/SEO)'),
+(14,'TI (Network/Admin/Support)'),
+(15,'Rumah Sakit'),
+(16,'Sales');
 
 /*Table structure for table `lowongan` */
 
@@ -40,23 +58,17 @@ CREATE TABLE `lowongan` (
   `range_gaji` varchar(30) DEFAULT NULL,
   `keterampilan` text,
   `pendidikan` varchar(10) DEFAULT NULL,
-  `jurusan` int(6) DEFAULT NULL,
+  `jurusan` varchar(100) DEFAULT NULL,
   `pengalaman_kerja` int(2) DEFAULT NULL,
   `kategori_pekerjaan` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `lowongan` */
 
 insert  into `lowongan`(`id`,`id_perusahaan`,`nama_loker`,`deskripsi`,`range_gaji`,`keterampilan`,`pendidikan`,`jurusan`,`pengalaman_kerja`,`kategori_pekerjaan`) values 
-(1,1,'Fullstuck Developer','Deskripsi Lowongan','1',NULL,'1',1,1,1),
-(2,1,'Fullstuck Developer','Deskripsi Lowongan','1',NULL,'1',1,1,1),
-(3,1,'Fullstuck Developer','Deskripsi Lowongan','1',NULL,'1',1,1,1),
-(4,1,'Fullstuck Developer','Deskripsi Lowongan','1',NULL,'1',1,1,1),
-(5,1,'Fullstuck Developer','Deskripsi Lowongan','1',NULL,'1',1,1,1),
-(6,1,'Fullstuck Developer','Deskripsi Lowongan','1','[\"1\",\"2\"]','1',1,1,1),
-(7,1,'Fullstuck Developer','Deskripsi Lowongan','1','[\"1\",\"2\"]','1',1,1,1),
-(8,1,'Fullstuck Developer','Deskripsi Lowongan','0 - 1000000','null','sd',1,1,1);
+(20,17,'Fullstuck Developer','Deskripsi Lowongan','0 - 1000000','[\"4\",\"5\",\"12\"]','SD',NULL,1,3),
+(21,17,'Fullstuck Developer','Deskripsi Lowongan','0 - 1000000','[\"4\",\"8\"]','S1','Ilmu Komputer',4,5);
 
 /*Table structure for table `pelamar` */
 
@@ -67,6 +79,7 @@ CREATE TABLE `pelamar` (
   `nama` varchar(87) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `password` varchar(64) DEFAULT NULL,
+  `foto` varchar(200) DEFAULT NULL,
   `taggallahir` date DEFAULT NULL,
   `jk` char(3) DEFAULT NULL,
   `alamat` text,
@@ -75,6 +88,11 @@ CREATE TABLE `pelamar` (
   `jabatan_ingin` varchar(300) DEFAULT NULL,
   `jabatan_pokok` varchar(300) DEFAULT NULL,
   `jabatan_sampingan` varchar(300) DEFAULT NULL,
+  `keterampilan` text,
+  `pendidikan` text,
+  `jurusan` text,
+  `tahun` text,
+  `ijazah` text,
   `kendala` text,
   `keunggulan` text,
   `tanggaldaftar` datetime DEFAULT NULL,
@@ -83,6 +101,7 @@ CREATE TABLE `pelamar` (
   `cacatlain` varchar(765) DEFAULT NULL,
   `statsus_bekerja` char(39) DEFAULT NULL,
   `rangegaji` varchar(87) DEFAULT NULL,
+  `pengalaman_kerja` int(2) DEFAULT NULL,
   `agama` varchar(90) DEFAULT NULL,
   `kewarganegaraan` varchar(150) DEFAULT NULL,
   `pekerjaan_sekarang` varchar(150) DEFAULT NULL,
@@ -94,12 +113,12 @@ CREATE TABLE `pelamar` (
   `pendidikan_terakhir` varchar(150) DEFAULT NULL,
   `pendidikannonformal_terakhir` varchar(765) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25044 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=25053 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `pelamar` */
 
-insert  into `pelamar`(`id`,`nama`,`email`,`password`,`taggallahir`,`jk`,`alamat`,`tinggibadan`,`beratbadan`,`jabatan_ingin`,`jabatan_pokok`,`jabatan_sampingan`,`kendala`,`keunggulan`,`tanggaldaftar`,`sim`,`cacatbadan`,`cacatlain`,`statsus_bekerja`,`rangegaji`,`agama`,`kewarganegaraan`,`pekerjaan_sekarang`,`pekerja_status`,`desa`,`usaha_sektor`,`nikah_status`,`pekerjaan_terakhir`,`pendidikan_terakhir`,`pendidikannonformal_terakhir`) values 
-(25043,'Surya Kusuma','gungde@gmail.com','4297f44b13955235245b2497399d7a93','1995-11-20','l','Jalan Blambangan Gg 1 No 1',NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,'081234123123',NULL,NULL,NULL,'5000000','hindu',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+insert  into `pelamar`(`id`,`nama`,`email`,`password`,`foto`,`taggallahir`,`jk`,`alamat`,`tinggibadan`,`beratbadan`,`jabatan_ingin`,`jabatan_pokok`,`jabatan_sampingan`,`keterampilan`,`pendidikan`,`jurusan`,`tahun`,`ijazah`,`kendala`,`keunggulan`,`tanggaldaftar`,`sim`,`cacatbadan`,`cacatlain`,`statsus_bekerja`,`rangegaji`,`pengalaman_kerja`,`agama`,`kewarganegaraan`,`pekerjaan_sekarang`,`pekerja_status`,`desa`,`usaha_sektor`,`nikah_status`,`pekerjaan_terakhir`,`pendidikan_terakhir`,`pendidikannonformal_terakhir`) values 
+(25052,'Surya Kusuma','gungde@gmail.com','4297f44b13955235245b2497399d7a93','e42c8bdd46dc7ebaf80d11f63da46dd1.jpg','1995-11-20','l','Jalan Blambangan Gg 1 No 1',NULL,NULL,'',NULL,NULL,'[\"4\",\"8\",\"9\",\"12\"]','[\"SD\",\"SMP\",\"SMA\\/SMK\",\"S1\"]','[\"IPA\",\"Komputer\"]','[\"1\",\"1\",\"1\",\"1\"]','[\"378c0cdd5d5c5b05ef7897bd093dada6.gif\",\"be526f3c201b64469a787e42bde22b36.png\",\"1a77b6441e719008ffd044a9bdc32e52.jpg\",\"b6ecdf9a0044fbb2227f436ba60d0159.jpg\"]',NULL,NULL,NULL,'081234123123',NULL,NULL,NULL,'5000000',5,'hindu',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `pendidikan_formal` */
 
@@ -138,13 +157,21 @@ CREATE TABLE `pendidikan_non_formal_list` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama_pendidikan` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 /*Data for the table `pendidikan_non_formal_list` */
 
 insert  into `pendidikan_non_formal_list`(`id`,`nama_pendidikan`) values 
-(1,'Bisa Nyetir'),
-(2,'Office Word');
+(3,'Bisa Nyetir'),
+(4,'MsOffice Word'),
+(5,'MsOffice Excel'),
+(6,'MsOffice Power Point'),
+(7,'Adobe Photoshop'),
+(8,'Adobe Illustrator'),
+(9,'Adobe In Design'),
+(10,'Adobe Premier Pro'),
+(11,'Adobe After Effect'),
+(12,'CorelDraw');
 
 /*Table structure for table `perusahaan` */
 
@@ -171,12 +198,12 @@ CREATE TABLE `perusahaan` (
   `situ` varchar(100) DEFAULT NULL,
   `izin_lainnya` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `perusahaan` */
 
 insert  into `perusahaan`(`id`,`email`,`password`,`nama_perusahaan`,`deskripsi`,`bidang_perusahaan`,`logo`,`alamat`,`kode_pos`,`provinsi`,`kabupaten`,`no_hp`,`nama_kontak`,`jabatan_perusahaan`,`akta_pendirian_perusahaan`,`siup`,`tdp`,`situ`,`izin_lainnya`) values 
-(1,'abc@gmail.com','4297f44b13955235245b2497399d7a93','Perusahaan ABC','Deskripsi Perusahaan',1,NULL,'Jalan Blambangan','08123','Bal','Badung','081234567','Budi','Resepsionis',NULL,NULL,NULL,NULL,NULL);
+(17,'abc@gmail.com','4297f44b13955235245b2497399d7a93','Perusahaan ABC','Deskripsi Perusahaan',1,'aed88c35dd5fa7157eeff36a8ce2f5a6.jpg','Jalan Blambangan','08123','Bal','Badung','081234567','Budi','Resepsionis','2f2a776be701ece6f3fecdf62fe1d257.jpg','fe4855540b5b46936236609c4344231f.jpg','601b4837a3f217b8df1892a548ee9bf4.jpg','85d32407d23243ab1b9c6b49cbc46eb4.jpg','b7704c36896c360422649d47520cbd76.jpg');
 
 /*Table structure for table `spesialisasi` */
 
