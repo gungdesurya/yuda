@@ -52,9 +52,9 @@ class MLowongan extends CI_Model
   {
     return $this->db
       ->select('lowongan.*, perusahaan.nama_perusahaan, kategori.kategori')
-      ->where('id_perusahaan', $id)
-      ->join('perusahaan', 'perusahaan.id = lowongan.id_perusahaan')
-      ->join('kategori', 'kategori.id = lowongan.kategori_pekerjaan')
+      ->where('perusahaan.id_perusahaan', $id)
+      ->join('perusahaan', 'perusahaan.id_perusahaan = lowongan.id_perusahaan')
+      ->join('kategori', 'kategori.id = lowongan.kategori')
       ->get('lowongan')
       ->result();
   }

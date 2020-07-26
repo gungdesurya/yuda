@@ -6,12 +6,9 @@
       <div class="row">
         <div class="col s12 m8">
           <div class="row">
-            <div class="col s12 m3">
-              <img class="gambar-perusahaan" src="<?= site_url('/uploads/logo/' . $perusahaan->logo) ?>" alt="">
-            </div>
-            <div class="col s12 m9">
+            <div class="col s12">
               <span class="card-title"><?= $perusahaan->nama_perusahaan ?></span>
-              <div class="perusahaan">Alamat: <?= "$perusahaan->alamat, $perusahaan->kabupaten, $perusahaan->provinsi ($perusahaan->kode_pos)" ?></div>
+              <div class="perusahaan">Lokasi: <?= "$perusahaan->pen_provinsi, $perusahaan->pen_kota ($perusahaan->pen_kodepos)" ?></div>
               <div class="right-align">
                 <a href="<?= site_url('perusahaan-s/perusahaan/edit') ?>" class="btn deep-purple">Edit Profil</a>
               </div>
@@ -19,23 +16,23 @@
           </div>
 
           <div class="label-section">Tentang Kami</div>
-          <div class="deskripsi"><?= $perusahaan->deskripsi ?></div>
+          <!-- <div class="deskripsi"><?= $perusahaan->deskripsi ?></div> -->
 
           <div class="divider"></div>
           <div class="label-section">Izin Perusahaan</div>
           <ul class="browser-default">
-            <li><a href="<?= site_url('uploads/file_perusahaan/' . $perusahaan->akta_pendirian_perusahaan) ?>" target="_blank">Akta Pendirian Perusahaan</a></li>
+            <!-- <li><a href="<?= site_url('uploads/file_perusahaan/' . $perusahaan->akta_pendirian_perusahaan) ?>" target="_blank">Akta Pendirian Perusahaan</a></li>
             <li><a href="<?= site_url('uploads/file_perusahaan/' . $perusahaan->siup) ?>" target="_blank">SIUP</a></li>
             <li><a href="<?= site_url('uploads/file_perusahaan/' . $perusahaan->tdp) ?>" target="_blank">TDP</a></li>
             <li><a href="<?= site_url('uploads/file_perusahaan/' . $perusahaan->situ) ?>" target="_blank">SITU</a></li>
-            <li><a href="<?= site_url('uploads/file_perusahaan/' . $perusahaan->izin_lainnya) ?>" target="_blank">Izin Lainnya</a></li>
+            <li><a href="<?= site_url('uploads/file_perusahaan/' . $perusahaan->izin_lainnya) ?>" target="_blank">Izin Lainnya</a></li> -->
           </ul>
         </div>
         <div class="col s12 m4 blue-grey lighten-5 side-detail">
           <div class="label-section">Informasi</div>
-          <div class="kategori">No HP: <?= $perusahaan->no_hp ?></div>
+          <!-- <div class="kategori">No HP: <?= $perusahaan->no_hp ?></div>
           <div class="kategori">Nama Kontak: <?= $perusahaan->nama_kontak ?></div>
-          <div class="kategori">Jabatan: <?= $perusahaan->jabatan_perusahaan ?></div>
+          <div class="kategori">Jabatan: <?= $perusahaan->jabatan_perusahaan ?></div> -->
         </div>
       </div>
 

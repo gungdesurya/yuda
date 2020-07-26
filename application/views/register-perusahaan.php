@@ -1,208 +1,61 @@
 <div class="container">
   <h4>Daftar Perusahaan</h4>
   <br>
-  <div class="card">
-    <div class="row">
-      <div class="col s12">
-        <ul class="tabs" id="tabs">
-          <li class="tab col s3" id="menu1"><a class="active deep-orange-text text-darken-1" href="#test1">Informasi Umum</a></li>
-          <li class="tab col s3 disabled" id="menu2"><a class=" deep-orange-text text-darken-1" href="#test2">Izin Perusahaan</a></li>
-        </ul>
+  <div class="card" style="padding: 24px;">
+
+    <form class="row" action="<?= site_url('Daftar/submitPerusahaan') ?>" method="POST">
+      <div class="input-field col s12 m6">
+        <input id="nama_perusahaan" type="text" name="nama_perusahaan" required value="Perusahaan ABC">
+        <label for="nama_perusahaan">Nama Perusahaan</label>
       </div>
-    </div>
 
-    <div id="test1" class="col s12" style="padding: 24px">
-      <form class="row" id="form1">
-        <div class="input-field col s12 m6">
-          <input id="nama_perusahaan" type="text" name="nama_perusahaan" required value="Perusahaan ABC">
-          <label for="nama_perusahaan">Nama Perusahaan</label>
-        </div>
+      <div class="input-field col s12 m6">
+        <input id="email" type="email" name="email" required value="abc@gmail.com">
+        <label for="email">Email</label>
+      </div>
 
-        <div class="input-field col s12 m6">
-          <input id="email" type="email" name="email" required value="abc@gmail.com">
-          <label for="email">Email</label>
-        </div>
+      <div class="input-field col s6">
+        <input id="password" type="password" name="password" required value="123123">
+        <label for="password">Password</label>
+      </div>
 
-        <div class="input-field col s6">
-          <input id="password" type="password" name="password" required value="123123">
-          <label for="password">Password</label>
-        </div>
+      <div class="input-field col s6">
+        <input id="confirm_password" type="password" name="confirm_password" required value="123123">
+        <label for="confirm_password">Ulangi Password</label>
+      </div>
 
-        <div class="input-field col s6">
-          <input id="confirm_password" type="password" name="confirm_password" required value="123123">
-          <label for="confirm_password">Ulangi Password</label>
-        </div>
+      <div class="input-field col s12 m6 l4">
+        <select name="jenis_perusahaan" id="jenis_perusahaan">
+          <option value="Instansi / Pemerintah / BUMN" selected>Instansi / Pemerintah / BUMN</option>
+          <option value="Swasta Lokal">Swasta Lokal</option>
+          <option value="Swasta Asing">Swasta Asing</option>
+          <option value="Umum/Perorangan">Umum/Perorangan</option>
+          <option value="Umum/Kelompok Organisasi">Umum/Kelompok Organisasi</option>
+          <option value="Umum/Kelompok Organisasi">Umum/Kelompok Organisasi</option>
+          <option value="PPTKIS">PPTKIS</option>
+          <option value="LPK">LPK</option>
+        </select>
+        <label for="jenis_perusahaan">Jenis Perusahaan</label>
+      </div>
 
-        <div class="input-field col s12">
-          <textarea id="deskripsi" name="deskripsi" class="materialize-textarea" required>Deskripsi Perusahaan</textarea>
-          <label for="deskripsi">Deskripsi</label>
-        </div>
+      <div class="input-field col s12 m6 l2">
+        <input id="pen_kodepos" type="number" name="pen_kodepos" required value="08123">
+        <label for="pen_kodepos">Kode Pos</label>
+      </div>
 
-        <div class="input-field col s12 m4">
-          <input id="website" type="text" name="website" required value="abc.com">
-          <label for="website">Website</label>
-        </div>
+      <div class="input-field col s12 m6 l3">
+        <input id="pen_provinsi" type="text" name="pen_provinsi" required value="Bali">
+        <label for="pen_provinsi">Provinsi</label>
+      </div>
 
-        <div class="input-field col s12 m4">
-          <select name="bidang_perusahaan" id="bidang_perusahaan">
-            <option value="1" selected>Instansi / Pemerintah / BUMN</option>
-            <option value="2">Swasta Lokal</option>
-            <option value="3">Swasta Asing</option>
-          </select>
-          <label for="bidang_perusahaan">Jenis Penyedia Kerja</label>
-        </div>
+      <div class="input-field col s12 m6 l3">
+        <input id="pen_kota" type="text" name="pen_kota" required value="Denpasar">
+        <label for="pen_kota">Kota</label>
+      </div>
 
-        <div class="col s12 m4">
-          <label class="custom-file-label" for="customFile">Logo Perusahaan</label>
-          <input type="file" class="custom-file-input" id="customFile" name="logo" required>
-        </div>
-
-        <div class="input-field col s12 m8">
-          <textarea id="alamat" name="alamat" class="materialize-textarea" required>Jalan Blambangan</textarea>
-          <label for="alamat">Alamat</label>
-        </div>
-
-        <div class="input-field col s12 m4">
-          <input id="kode_pos" type="number" name="kode_pos" required value="08123">
-          <label for="kode_pos">Kode Pos</label>
-        </div>
-
-        <div class="input-field col s12 m6">
-          <input id="provinsi" type="text" name="provinsi" required value="Bali">
-          <label for="provinsi">Provinsi</label>
-        </div>
-
-        <div class="input-field col s12 m6">
-          <input id="kabupaten" type="text" name="kabupaten" required value="Badung">
-          <label for="kabupaten">Kabupaten</label>
-        </div>
-
-        <div class="input-field col s12 m3">
-          <input id="no_hp" type="text" name="no_hp" required value="081234567">
-          <label for="no_hp">Nomor HP</label>
-        </div>
-
-        <div class="input-field col s12 m3">
-          <input id="no_fax" type="text" name="no_fax" required value="123124123">
-          <label for="no_fax">Nomor Fax</label>
-        </div>
-
-        <div class="input-field col s12 m3">
-          <input id="nama_kontak" type="text" name="nama_kontak" value="Budi">
-          <label for="nama_kontak">Nama Kontak Person</label>
-        </div>
-
-        <div class="input-field col s12 m3">
-          <input id="jabatan_perusahaan" type="text" name="jabatan_perusahaan" value="Resepsionis">
-          <label for="jabatan_perusahaan">Jabatan di Perusahaan</label>
-        </div>
-
-        <div class="col s12 right-align">
-          <input type="submit" value="Next" class="btn deep-purple">
-        </div>
-      </form>
-    </div>
-
-    <div id="test2" class="col s12" style="padding: 24px">
-      <form class="row" id="form2">
-        <div class="col s12 m6">
-          <div>Akta Pendirian Perusahaan</div>
-        </div>
-        <div class="col s12 m6">
-          <input type="file" id="akta_perusahaan" name="akta_pendirian_perusahaan">
-          <br><br>
-        </div>
-
-        <div class="col s12 m6">
-          <div>SIUP</div>
-        </div>
-        <div class="col s12 m6">
-          <input type="file" id="siup" name="siup">
-          <br><br>
-        </div>
-
-        <div class="col s12 m6">
-          <div>TDP</div>
-        </div>
-        <div class="col s12 m6">
-          <input type="file" id="tdp" name="tdp">
-          <br><br>
-        </div>
-
-        <div class="col s12 m6">
-          <div>SITU</div>
-        </div>
-        <div class="col s12 m6">
-          <input type="file" id="situ" name="situ">
-          <br><br>
-        </div>
-
-        <div class="col s12 m6">
-          <div>Izin Lainnya</div>
-        </div>
-        <div class="col s12 m6">
-          <input type="file" id="izin_lainnya" name="izin_lainnya">
-          <br><br>
-        </div>
-
-        <div class="col s6">
-          <input type="button" value="Back" class="btn red" id="back2">
-        </div>
-        <div class="col s6 right-align">
-          <input type="submit" value="Next" class="btn deep-purple">
-        </div>
-
-      </form>
-    </div>
+      <div class="col s12 right-align">
+        <input type="submit" value="Daftar" class="btn deep-purple">
+      </div>
+    </form>
 
   </div>
-
-  <script>
-    var form = new FormData()
-
-    $(document).ready(function() {
-      $('#form1').submit(function(event) {
-        event.preventDefault();
-
-        let formdata = new FormData(this);
-        for (var pair of formdata.entries()) form.append(pair[0], pair[1]);
-
-        $('#menu2').removeClass('disabled')
-        let instance = M.Tabs.init($('#tabs'))[0]
-        instance.select('test2');
-        $('#menu1').addClass('disabled')
-      });
-
-      $('#form2').submit(function(event) {
-        event.preventDefault();
-
-        let formdata = new FormData(this);
-        for (var pair of formdata.entries()) form.append(pair[0], pair[1]);
-
-        $.ajax({
-          url: '<?= site_url('Daftar/submitPerusahaan') ?>',
-          type: 'POST',
-          data: form,
-          dataType: 'json',
-          cache: false,
-          contentType: false,
-          processData: false,
-          success: function(res) {
-            alert('Terdaftar sebagai perusahaan!');
-            window.location.href = "<?= site_url('perusahaan-s/perusahaan/profil') ?>";
-          },
-          error: function() {
-            alert("error occured");
-          }
-        });
-
-      });
-
-      $('#back2').click(function(event) {
-        $('#menu1').removeClass('disabled')
-        let instance = M.Tabs.init($('#tabs'))[0]
-        instance.select('test1');
-        $('#menu2').addClass('disabled')
-      })
-    });
-  </script>

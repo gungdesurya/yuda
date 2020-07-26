@@ -6,25 +6,16 @@ class MPerusahaan extends CI_Model
 
   public function signup($data)
   {
+    // print_r($data);
     $param = new stdClass();
+    $param->id_perusahaan = generateRandomString();
     $param->email = $data['email'];
     $param->password = md5($data['password']);
     $param->nama_perusahaan = $data['nama_perusahaan'];
-    $param->deskripsi = $data['deskripsi'];
-    $param->bidang_perusahaan = $data['bidang_perusahaan'];
-    $param->logo = $data['logo'];
-    $param->alamat = $data['alamat'];
-    $param->kode_pos = $data['kode_pos'];
-    $param->provinsi = $data['provinsi'];
-    $param->kabupaten = $data['kabupaten'];
-    $param->no_hp = $data['no_hp'];
-    $param->nama_kontak = $data['nama_kontak'];
-    $param->jabatan_perusahaan = $data['jabatan_perusahaan'];
-    $param->akta_pendirian_perusahaan = $data['akta_pendirian_perusahaan'];
-    $param->siup = $data['siup'];
-    $param->tdp = $data['tdp'];
-    $param->situ = $data['situ'];
-    $param->izin_lainnya = $data['izin_lainnya'];
+    $param->jenis_perusahaan = $data['jenis_perusahaan'];
+    $param->pen_kodepos = $data['pen_kodepos'];
+    $param->pen_provinsi = $data['pen_provinsi'];
+    $param->pen_kota = $data['pen_kota'];
 
     return $this->db->insert('perusahaan', $param);
   }
@@ -36,6 +27,17 @@ class MPerusahaan extends CI_Model
 
   public function getOne($id)
   {
-    return $this->db->where('id', $id)->get('perusahaan')->row();
+    return $this->db->where('id_perusahaan', $id)->get('perusahaan')->row();
   }
+}
+
+function generateRandomString($length = 32)
+{
+  $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  $charactersLength = strlen($characters);
+  $randomString = '';
+  for ($i = 0; $i < $length; $i++) {
+    $randomString .= $characters[rand(0, $charactersLength - 1)];
+  }
+  return $randomString;
 }

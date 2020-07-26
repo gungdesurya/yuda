@@ -54,12 +54,13 @@ class Login extends CI_Controller
     $data['password'] = md5($data['password']);
     $user = $this->MPerusahaan->login($data);
     if ($user) {
-      $login['id'] = $user->id;
+      $login['id_perusahaan'] = $user->id_perusahaan;
       $login['email'] = $user->email;
       $login['nama'] = $user->nama_perusahaan;
       $login['tipe'] = 'perusahaan';
       $login['isLoggedIn'] = true;
       $this->session->set_userdata($login);
+
 
       redirect('perusahaan-s/perusahaan/profil', 'refresh');
     } else {
