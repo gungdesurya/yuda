@@ -9,7 +9,7 @@
             <select name="kategori" id="kategori_pekerjaan">
               <option value="" selected>Select All</option>
               <?php foreach ($kategori as $i => $k) : ?>
-                <option value="<?= $k->id ?>" <?= $param->kategori == $k->id ? 'selected' : '' ?>><?= $k->kategori ?></option>
+                <option value="<?= $k->kategori ?>" <?= $param->kategori == $k->id ? 'selected' : '' ?>><?= $k->kategori ?></option>
               <?php endforeach ?>
             </select>
             <label for="bidang_perusahaan">Kategori</label>
@@ -36,17 +36,17 @@
             <img class="gambar-perusahaan" src="<?= site_url('/assets/images/person_6.jpg') ?>" style="width: 100%">
           </div>
           <div class="col s8 m10">
-            <a class="card-title" href="<?= site_url('lowongan/detail/' . $l->id) ?>"><?= $l->nama_loker ?></a>
+            <a class="card-title" href="<?= site_url('lowongan/detail/' . $l->id) ?>"><?= $l->kategori ?></a>
             <div class="perusahaan"><a href="<?= site_url('perusahaan/detail/' . $l->id_perusahaan) ?>"><?= $l->nama_perusahaan ?></a></div>
-            <div class="pengalaman">Min Pengalaman: <?= $l->pengalaman_kerja ?> Tahun</div>
-            <div class="gaji">Gaji Rp. <?= $l->range_gaji ?></div>
+            <!-- <div class="pengalaman">Min Pengalaman: <?= $l->pengalaman_kerja ?> Tahun</div> -->
+            <div class="gaji"><?= "Gaji Rp. $l->range_gaji_dari - Rp. $l->range_gaji_sampai" ?></div>
 
             <div class="chipslist">
-              <div class="chip deep-purple darken-1 white-text"><?= $l->pendidikan ?></div>
-              <?php if ($l->jurusan) : ?>
-                <div class="chip deep-purple darken-1 white-text"><?= $l->jurusan ?></div>
+              <div class="chip deep-purple darken-1 white-text"><?= $l->pendidikan_minimal ?></div>
+              <?php if ($l->low_jurusan) : ?>
+                <div class="chip deep-purple darken-1 white-text"><?= $l->low_jurusan ?></div>
               <?php endif ?>
-              <div class="chip deep-purple darken-1 white-text"><?= $l->kategori ?></div>
+              <!-- <div class="chip deep-purple darken-1 white-text"><?= $l->kategori ?></div> -->
             </div>
           </div>
         </div>

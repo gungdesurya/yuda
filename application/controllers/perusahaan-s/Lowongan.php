@@ -29,7 +29,7 @@ class Lowongan extends CI_Controller
     if (!$data['isLoggedIn']) redirect(base_url() . 'Home', 'refresh');
 
     $data = $this->input->post();
-    $data['id_perusahaan'] = $this->session->userdata('id');
+    $data['id_perusahaan'] = $this->session->userdata('id_perusahaan');
     $this->MLowongan->create($data);
 
     redirect('perusahaan-s/perusahaan/profil', 'refresh');
@@ -43,7 +43,7 @@ class Lowongan extends CI_Controller
     $data['pendidikanNonFormal'] = $this->MPendidikanNonFormal->get();
     $data['kategori'] = $this->MKategori->get();
     $data['lowongan'] = $this->MLowongan->getOne($id);
-    $data['currPNF'] = json_decode($data['lowongan']->keterampilan);
+    // $data['currPNF'] = json_decode($data['lowongan']->keterampilan);
 
     $this->load->view('header', $data);
     $this->load->view('perusahaan/lowongan/edit', $data);

@@ -37,6 +37,24 @@ a {
 	}
 }
 
+.no-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: rgba(black, 0.6);
+
+	i {
+		font-size: 42px;
+		margin: 1rem 0;
+	}
+
+	.message {
+		font-size: 16px;
+		margin-bottom: 12px;
+		text-align: center;
+	}
+}
+
 .home-container {
 	background-image: url("../images/undraw_work_time_lhoj.svg");
 	background-position: top;
@@ -49,6 +67,22 @@ a {
 .home-search-form {
 	margin: 30vh auto 0 auto;
 	max-width: 640px;
+}
+
+.perusahaan-detail {
+	h4 {
+		margin: 24px 0 8px;
+	}
+	.alamat {
+		font-size: 15px;
+		color: rgba(black, 0.6);
+	}
+	.jenis-perusahaan {
+		font-size: 16px;
+		font-weight: bold;
+		margin-top: 8px;
+		color: rgba(black, 0.6);
+	}
 }
 
 .lowongan-list {
@@ -67,13 +101,19 @@ a {
 		}
 
 		.pengalaman,
-		.gaji {
+		.gaji,
+		.label-right-text {
 			font-style: italic;
 			color: rgba(black, 0.6);
 		}
 
 		.gaji {
 			margin-bottom: 8px;
+		}
+
+		.label-right-text {
+			font-size: 13px;
+			margin-top: 4px;
 		}
 		border-bottom: 1px solid #bbb;
 	}

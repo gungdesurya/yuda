@@ -15,8 +15,11 @@ class Perusahaan extends CI_Controller
     $data['isLoggedIn'] = $this->session->userdata('isLoggedIn');
     if (!$data['isLoggedIn']) redirect(base_url() . 'Home', 'refresh');
 
-    $data['lowongan'] = $this->MLowongan->getLowonganPerusahaan($this->session->userdata('id'));
+    // echo $this->session->userdata('id_perusahaan');
+    $data['lowongan'] = $this->MLowongan->getLowonganPerusahaan($this->session->userdata('id_perusahaan'));
     $data['perusahaan'] = $this->MPerusahaan->getOne($this->session->userdata('id_perusahaan'));
+
+    // print_r($data['lowongan']);
 
     $this->load->view('header', $data);
     $this->load->view('perusahaan/perusahaan/profil', $data);

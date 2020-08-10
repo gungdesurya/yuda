@@ -1,41 +1,13 @@
-<div class="container">
-  <h4>Profil Perusahaan</h4>
-  <br>
-  <div class="lowongan-detail card">
-    <div class="card-content">
-      <div class="row">
-        <div class="col s12 m8">
-          <div class="row">
-            <div class="col s12">
-              <span class="card-title"><?= $perusahaan->nama_perusahaan ?></span>
-              <div class="perusahaan">Lokasi: <?= "$perusahaan->pen_provinsi, $perusahaan->pen_kota ($perusahaan->pen_kodepos)" ?></div>
-              <div class="right-align">
-                <a href="<?= site_url('perusahaan-s/perusahaan/edit') ?>" class="btn deep-purple">Edit Profil</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="label-section">Tentang Kami</div>
-          <!-- <div class="deskripsi"><?= $perusahaan->deskripsi ?></div> -->
-
-          <div class="divider"></div>
-          <div class="label-section">Izin Perusahaan</div>
-          <ul class="browser-default">
-            <!-- <li><a href="<?= site_url('uploads/file_perusahaan/' . $perusahaan->akta_pendirian_perusahaan) ?>" target="_blank">Akta Pendirian Perusahaan</a></li>
-            <li><a href="<?= site_url('uploads/file_perusahaan/' . $perusahaan->siup) ?>" target="_blank">SIUP</a></li>
-            <li><a href="<?= site_url('uploads/file_perusahaan/' . $perusahaan->tdp) ?>" target="_blank">TDP</a></li>
-            <li><a href="<?= site_url('uploads/file_perusahaan/' . $perusahaan->situ) ?>" target="_blank">SITU</a></li>
-            <li><a href="<?= site_url('uploads/file_perusahaan/' . $perusahaan->izin_lainnya) ?>" target="_blank">Izin Lainnya</a></li> -->
-          </ul>
-        </div>
-        <div class="col s12 m4 blue-grey lighten-5 side-detail">
-          <div class="label-section">Informasi</div>
-          <!-- <div class="kategori">No HP: <?= $perusahaan->no_hp ?></div>
-          <div class="kategori">Nama Kontak: <?= $perusahaan->nama_kontak ?></div>
-          <div class="kategori">Jabatan: <?= $perusahaan->jabatan_perusahaan ?></div> -->
-        </div>
-      </div>
-
+<div class="perusahaan-detail container">
+  <div class="row">
+    <div class="col s12 m8">
+      <h4><?= $perusahaan->nama_perusahaan ?></h4>
+      <div class="jenis-perusahaan"><?= $perusahaan->jenis_perusahaan ?></div>
+      <div class="alamat">Lokasi: <?= "$perusahaan->pen_provinsi, $perusahaan->pen_kota ($perusahaan->pen_kodepos)" ?></div>
+    </div>
+    <div class="col s12 m4 right-align">
+      <br><br>
+      <a href="<?= site_url('perusahaan-s/perusahaan/edit') ?>" class="btn deep-purple">Edit Profil</a>
     </div>
   </div>
   <br>
@@ -52,30 +24,37 @@
     <?php foreach ($lowongan as $l) : ?>
       <div class="card-content">
         <div class="row">
-          <div class="col s4 m2">
-            <img class="gambar-perusahaan" src="<?= site_url('/uploads/logo/' . $perusahaan->logo) ?>" style="width: 100%">
-          </div>
-          <div class="col s6 m8">
-            <a class="card-title" href="<?= site_url('lowongan/detail/' . $l->id) ?>"><?= $l->nama_loker ?></a>
-            <div class="pengalaman">Min Pengalaman: <?= $l->pengalaman_kerja ?> Tahun</div>
-            <div class="gaji">Gaji Rp. <?= $l->range_gaji ?></div>
+          <div class="col s12 m8">
+            <a class="card-title" href="<?= site_url('lowongan/detail/' . $l->id) ?>"><?= $l->kategori ?></a>
+            <div class="gaji">Gaji Rp. <?= $l->range_gaji_dari ?> - <?= $l->range_gaji_sampai ?></div>
 
             <div class="chipslist">
-              <div class="chip deep-purple darken-1 white-text"><?= $l->pendidikan ?></div>
-              <?php if ($l->jurusan) : ?>
-                <div class="chip deep-purple darken-1 white-text"><?= $l->jurusan ?></div>
+              <?php if ($l->pendidikan_minimal) : ?>
+                <div class="chip deep-purple darken-1 white-text"><?= $l->pendidikan_minimal ?></div>
+              <?php endif ?>
+              <?php if ($l->low_jurusan) : ?>
+                <div class="chip deep-purple darken-1 white-text"><?= $l->low_jurusan ?></div>
               <?php endif ?>
               <div class="chip deep-purple darken-1 white-text"><?= $l->kategori ?></div>
             </div>
           </div>
-          <div class="col s2 right-align">
+          <div class="col s12 m4 right-align">
             <a class="btn deep-purple" href="<?= site_url('perusahaan-s/Lowongan/edit/' . $l->id) ?>">Edit</a>
-            <br><br>
             <button class="btn red" onclick="onDelete(<?= $l->id ?>)">Hapus</button>
+
+            <div class="label-right-text">Sampai: <?= date("d M Y", strtotime($l->low_tanggal_berakhir)) ?></div>
+            <div class="label-right-text"><?= $l->low_jumlah_tenaga ?> Lowongan</div>
           </div>
         </div>
       </div>
     <?php endforeach ?>
+
+    <?php if (sizeof($lowongan) == 0) : ?>
+      <div class="card-content no-content">
+        <i class="far fa-address-card"></i>
+        <span class="message">Tidak ada lowongan.<br> Silahkan klik buat lowongan untuk membuat lowongan baru</span>
+      </div>
+    <?php endif ?>
   </div>
 
   <script>

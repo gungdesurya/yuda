@@ -32,7 +32,7 @@ class Lowongan extends CI_Controller
     $data['isLoggedIn'] = $this->session->userdata('isLoggedIn');
     $data['lowongan'] = $this->MLowongan->getOne($id);
     $data['perusahaan'] = $this->MPerusahaan->getOne($data['lowongan']->id_perusahaan);
-    $data['pendidikanNonFormal'] = $this->MPendidikanNonFormal->getFilter($data['lowongan']->keterampilan);
+    // $data['pendidikanNonFormal'] = $this->MPendidikanNonFormal->getFilter($data['lowongan']->keterampilan);
 
     $this->load->view('header', $data);
     $this->load->view('lowongan', $data);

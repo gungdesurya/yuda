@@ -37,6 +37,31 @@ a {
   line-height: 24px;
 }
 
+.no-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.no-content i {
+  font-size: 42px;
+  margin: 1rem 0;
+}
+
+.no-content .message {
+  font-size: 16px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
 .home-container {
   background-image: url("../images/undraw_work_time_lhoj.svg");
   background-position: top;
@@ -49,6 +74,22 @@ a {
 .home-search-form {
   margin: 30vh auto 0 auto;
   max-width: 640px;
+}
+
+.perusahaan-detail h4 {
+  margin: 24px 0 8px;
+}
+
+.perusahaan-detail .alamat {
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.perusahaan-detail .jenis-perusahaan {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 8px;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .lowongan-list .card-content {
@@ -69,13 +110,19 @@ a {
 }
 
 .lowongan-list .card-content .pengalaman,
-.lowongan-list .card-content .gaji {
+.lowongan-list .card-content .gaji,
+.lowongan-list .card-content .label-right-text {
   font-style: italic;
   color: rgba(0, 0, 0, 0.6);
 }
 
 .lowongan-list .card-content .gaji {
   margin-bottom: 8px;
+}
+
+.lowongan-list .card-content .label-right-text {
+  font-size: 13px;
+  margin-top: 4px;
 }
 
 .lowongan-detail .gambar-perusahaan {
