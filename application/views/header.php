@@ -37,7 +37,11 @@
 				</ul>
 			<?php else : ?>
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
-					<li><a class="waves-effect waves-light btn deep-orange" href='<?= site_url('pelamar/Dashboard') ?>'>Dashboard</a></li>
+					<?php if ($tipe == 'pelamar') : ?>
+						<li><a class="waves-effect waves-light btn deep-orange" href='<?= site_url('pelamar/Dashboard') ?>'>Dashboard</a></li>
+					<?php else : ?>
+						<li><a class="waves-effect waves-light btn deep-orange" href='<?= site_url('perusahaan-s/perusahaan/profil') ?>'>Profil</a></li>
+					<?php endif ?>
 					<li><a class="waves-effect waves-light btn red" href='<?= site_url('Home/logout') ?>'>Logout</a></li>
 				</ul>
 			<?php endif ?>

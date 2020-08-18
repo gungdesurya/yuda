@@ -14,6 +14,7 @@ class Lowongan extends CI_Controller
   public function create()
   {
     $data['isLoggedIn'] = $this->session->userdata('isLoggedIn');
+    $data['tipe'] = $this->session->userdata('tipe');
     if (!$data['isLoggedIn']) redirect(base_url() . 'Home', 'refresh');
     $data['pendidikanNonFormal'] = $this->MPendidikanNonFormal->get();
     $data['kategori'] = $this->MKategori->get();
@@ -38,6 +39,7 @@ class Lowongan extends CI_Controller
   public function edit($id)
   {
     $data['isLoggedIn'] = $this->session->userdata('isLoggedIn');
+    $data['tipe'] = $this->session->userdata('tipe');
     if (!$data['isLoggedIn']) redirect(base_url() . 'Home', 'refresh');
 
     $data['pendidikanNonFormal'] = $this->MPendidikanNonFormal->get();

@@ -9,12 +9,16 @@ class Daftar extends CI_Controller
     $this->load->model('MPendidikanNonFormal');
     $this->load->model('MPelamar');
     $this->load->model('MPerusahaan');
+    $this->load->model('MKategori');
   }
 
   public function pelamar()
   {
     $data['pendidikanNonFormal'] = $this->MPendidikanNonFormal->get();
     $data['isLoggedIn'] = $this->session->userdata('isLoggedIn');
+    if ($data['isLoggedIn']) redirect(base_url() . 'Home', 'refresh');
+
+    $data['kategori'] = $this->MKategori->get();
 
     $this->load->view('header', $data);
     $this->load->view('register-pelamar', $data);
@@ -69,6 +73,7 @@ class Daftar extends CI_Controller
   public function perusahaan()
   {
     $data['isLoggedIn'] = $this->session->userdata('isLoggedIn');
+    if ($data['isLoggedIn']) redirect(base_url() . 'Home', 'refresh');
 
     $this->load->view('header', $data);
     $this->load->view('register-perusahaan', $data);

@@ -105,9 +105,14 @@
 
             <div class="input-field col s12 m4">
               <select name="tahun[0]">
-                <option value="1" selected>2010</option>
-                <option value="2">2011</option>
-                <option value="3">2012</option>
+                <?php
+                $thn_skr = date('Y');
+                for ($x = $thn_skr; $x >= 1980; $x--) {
+                ?>
+                  <option value="<?php echo "$x/" . ($x + 1) ?>"><?php echo "$x/" . ($x + 1) ?></option>
+                <?php
+                }
+                ?>
               </select>
               <label for="first_name">Tahun</label>
             </div>
@@ -129,9 +134,14 @@
 
             <div class="input-field col s12 m4">
               <select name="tahun[1]">
-                <option value="1" selected>2010</option>
-                <option value="2">2011</option>
-                <option value="3">2012</option>
+                <?php
+                $thn_skr = date('Y');
+                for ($x = $thn_skr; $x >= 1980; $x--) {
+                ?>
+                  <option value="<?php echo "$x/" . ($x + 1) ?>"><?php echo "$x/" . ($x + 1) ?></option>
+                <?php
+                }
+                ?>
               </select>
               <label for="first_name">Tahun</label>
             </div>
@@ -153,9 +163,14 @@
 
             <div class="input-field col s12 m4">
               <select name="tahun[2]">
-                <option value="1" selected>2010</option>
-                <option value="2">2011</option>
-                <option value="3">2012</option>
+                <?php
+                $thn_skr = date('Y');
+                for ($x = $thn_skr; $x >= 1980; $x--) {
+                ?>
+                  <option value="<?php echo "$x/" . ($x + 1) ?>"><?php echo "$x/" . ($x + 1) ?></option>
+                <?php
+                }
+                ?>
               </select>
               <label for="first_name">Tahun</label>
             </div>
@@ -177,9 +192,14 @@
 
             <div class="input-field col s12 m4">
               <select name="tahun[3]">
-                <option value="1" selected>2010</option>
-                <option value="2">2011</option>
-                <option value="3">2012</option>
+                <?php
+                $thn_skr = date('Y');
+                for ($x = $thn_skr; $x >= 1980; $x--) {
+                ?>
+                  <option value="<?php echo "$x/" . ($x + 1) ?>"><?php echo "$x/" . ($x + 1) ?></option>
+                <?php
+                }
+                ?>
               </select>
               <label for="first_name">Tahun</label>
             </div>
@@ -251,10 +271,9 @@
             <div class="col s12 m4">
               <div class="input-field">
                 <select name="spesialisasi" id="spesialisasi" class="form-control">
-                  <option value="" selected>0 - 1.000.000</option>
-                  <option value="">1.000.000 - 5.000.000</option>
-                  <option value="">5.000.000 - 10.000.000</option>
-                  <option value="">10.000.000 - 15.000.000</option>
+                  <?php foreach ($kategori as $i => $k) : ?>
+                    <option value="<?= $k->kategori ?>"><?= $k->kategori ?></option>
+                  <?php endforeach ?>
                 </select>
                 <label for="spesialisasi">Pekerjaan yang diinginkan</label>
               </div>

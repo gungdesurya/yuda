@@ -24,7 +24,6 @@ class Login extends CI_Controller
     $data = $this->input->post();
     $data['password'] = md5($data['password']);
     $user = $this->MPelamar->login($data);
-    print_r($user);
     if ($user) {
       $login['id'] = $user->id;
       $login['email'] = $user->email;

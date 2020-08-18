@@ -139,7 +139,7 @@
       });
 
       $('#pendidikan_minimal').change(function(event) {
-        if (event.target.value == 'S1') $('#low_jurusan').prop('disabled', false)
+        if (event.target.value == 'S1' || event.target.value == 'SMA/SMK') $('#low_jurusan').prop('disabled', false)
         else $('#low_jurusan').prop('disabled', true)
       });
 

@@ -8,11 +8,13 @@ class Dashboard extends CI_Controller
     parent::__construct();
     $this->load->model('MLowongan');
     $this->load->model('MPelamar');
+    $this->load->model('MKategori');
   }
 
   public function index()
   {
     $data['isLoggedIn'] = $this->session->userdata('isLoggedIn');
+    $data['tipe'] = $this->session->userdata('tipe');
     if (!$data['isLoggedIn']) redirect(base_url() . 'Home', 'refresh');
 
     // get semua lowongan
@@ -28,7 +30,7 @@ class Dashboard extends CI_Controller
       $l->score = 0;
       // (id gaji - id gaji pelamar) ^ 2
       $idGajiPelamar = $this->getGaji($pelamar->rangegaji);
-      $idGajiLowongan = array_search($l->range_gaji, $rangeGaji);
+      $idGajiLowongan = array_search("$l->range_gaji_dari - $l->range_gaji_sampai", $rangeGaji);
       $l->score += pow($idGajiLowongan + $idGajiPelamar, 2);
       // echo "$idGajiPelamar, $idGajiLowongan";
 
@@ -57,8 +59,9 @@ class Dashboard extends CI_Controller
     });
 
     // print_r($lowongan);
-    $data['lowongan'] = $lowongan;
+    $data['lowongan'] = array_slice($lowongan, 0, 20);
 
+    $data['kategori'] = $this->MKategori->get();
 
     $this->load->view('header', $data);
     $this->load->view('pelamar/dashboard', $data);

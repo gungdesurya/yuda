@@ -6,10 +6,10 @@ class MLowongan extends CI_Model
 
   public function create($data)
   {
-    // $keterampilan = [];
-    // foreach ($data['keterampilan'] as $k) {
-    //   array_push($keterampilan, $k);
-    // }
+    $keterampilan = [];
+    foreach ($data['keterampilan'] as $k) {
+      array_push($keterampilan, $k);
+    }
 
     $rangeGaji = explode(' - ', $data['range_gaji']);
 
@@ -23,16 +23,17 @@ class MLowongan extends CI_Model
     $param->kategori = $data['kategori'];
     $param->range_gaji_dari = $rangeGaji[0];
     $param->range_gaji_sampai = $rangeGaji[1];
-    // $param->keterampilan = json_encode($keterampilan);
+    $param->keterampilan = json_encode($keterampilan);
     $param->jenis_gaji = $data['jenis_gaji'];
     $param->status_pekerjaan = $data['status_pekerjaan'];
     $param->pendidikan_minimal = $data['pendidikan_minimal'];
-    if ($data['pendidikan_minimal'] == 'S1') $param->low_jurusan = $data['low_jurusan'];
+    if ($data['pendidikan_minimal'] == 'S1' or $data['pendidikan_minimal'] == 'SMA/SMK') $param->low_jurusan = $data['low_jurusan'];
     $param->low_lokasi = $data['low_lokasi'];
     $param->low_status_gender = $data['low_status_gender'];
     if ($param->low_status_gender == 'dengan gender') {
       $param->low_jumlah_tenaga_laki = $data['low_jumlah_tenaga_laki'];
       $param->low_jumlah_tenaga_perempuan = $data['low_jumlah_tenaga_perempuan'];
+      $param->low_jumlah_tenaga = $data['low_jumlah_tenaga_perempuan'] + $data['low_jumlah_tenaga_laki'];
     } else {
       $param->low_jumlah_tenaga = $data['low_jumlah_tenaga'];
     }
@@ -47,17 +48,17 @@ class MLowongan extends CI_Model
 
   public function edit($data, $id)
   {
-    // $keterampilan = [];
-    // foreach ($data['keterampilan'] as $k) {
-    //   array_push($keterampilan, $k);
-    // }
+    $keterampilan = [];
+    foreach ($data['keterampilan'] as $k) {
+      array_push($keterampilan, $k);
+    }
 
     $param = new stdClass();
     $param->nama_loker = $data['nama_loker'];
     $param->deskripsi = $data['deskripsi'];
     $param->range_gaji = $data['range_gaji'];
     $param->deskripsi = $data['deskripsi'];
-    // $param->keterampilan = json_encode($keterampilan);
+    $param->keterampilan = json_encode($keterampilan);
     $param->pendidikan = $data['pendidikan'];
     if ($data['pendidikan'] == 'S1') $param->jurusan = $data['jurusan'];
     $param->pengalaman_kerja = $data['pengalaman_kerja'];
@@ -80,7 +81,8 @@ class MLowongan extends CI_Model
 
   public function getLowongan($nama = '', $kategori = '')
   {
-    $where = "low_jurusan like '%$nama%'";
+    $where = "low_jurusan like '%$nama%' AND low_tanggal_berakhir >= '2020-01-01'";
+    // $where = "low_jurusan like '%$nama%' AND low_tanggal_berakhir >= CURRENT_TIMESTAMP()";
     if ($kategori != '') $where .= " AND kategori = '$kategori'";
     return $this->db
       ->select('lowongan.*, perusahaan.nama_perusahaan')

@@ -4,20 +4,20 @@
   <h5>Cari Lowongan</h5>
   <div class="card">
     <div class="card-content">
-      <form action="<?= site_url('lowongan') ?>" name="search-form">
+      <form action="<?= site_url('lowongan') ?>">
         <div class="row" style="margin-bottom: 0">
           <div class="input-field col s12 m4">
-            <select>
-              <option value="" disabled selected>Choose your option</option>
-              <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
+            <select name="kategori">
+              <option value="" selected>Select All</option>
+              <?php foreach ($kategori as $i => $k) : ?>
+                <option value="<?= $k->kategori ?>"><?= $k->kategori ?></option>
+              <?php endforeach ?>
             </select>
             <label>Kategori</label>
           </div>
           <div class="input-field col s12 m6">
-            <input placeholder="Cari..." id="first_name" type="text" class="validate">
-            <label for="first_name">Cari</label>
+            <input placeholder="Cari..." name="nama" id="nama" type="text" class="validate">
+            <label for="nama">Cari Jurusan</label>
           </div>
           <div class="input-field col s12 m2">
             <button type="submit" class="waves-effect waves-light btn deep-orange">Cari</button>
@@ -35,22 +35,24 @@
     <?php foreach ($lowongan as $l) : ?>
       <div class="card-content">
         <div class="row">
-          <div class="col s4 m2">
-            <img class="gambar-perusahaan" src="<?= site_url('/assets/images/person_6.jpg') ?>" style="width: 100%">
-          </div>
-          <div class="col s8 m10">
-            <a class="card-title" href="<?= site_url('lowongan/detail/' . $l->id) ?>"><?= $l->nama_loker ?></a>
+          <div class="col s12 m8">
+            <a class="card-title" href="<?= site_url('lowongan/detail/' . $l->id) ?>"><?= $l->kategori ?></a>
             <div class="perusahaan"><a href="<?= site_url('perusahaan/detail/' . $l->id_perusahaan) ?>"><?= $l->nama_perusahaan ?></a></div>
-            <div class="pengalaman">Min Pengalaman: <?= $l->pengalaman_kerja ?> Tahun</div>
-            <div class="gaji">Gaji Rp. <?= $l->range_gaji ?></div>
+            <div class="gaji">Gaji Rp. <?= $l->range_gaji_dari ?> - Rp. <?= $l->range_gaji_sampai ?></div>
 
             <div class="chipslist">
-              <div class="chip deep-purple darken-1 white-text"><?= $l->pendidikan ?></div>
-              <?php if ($l->jurusan) : ?>
-                <div class="chip deep-purple darken-1 white-text"><?= $l->jurusan ?></div>
+              <?php if ($l->pendidikan_minimal) : ?>
+                <div class="chip deep-purple darken-1 white-text"><?= $l->pendidikan_minimal ?></div>
+              <?php endif ?>
+              <?php if ($l->low_jurusan) : ?>
+                <div class="chip deep-purple darken-1 white-text"><?= $l->low_jurusan ?></div>
               <?php endif ?>
               <div class="chip deep-purple darken-1 white-text"><?= $l->kategori ?></div>
             </div>
+          </div>
+          <div class="col s12 m4 right-align">
+            <div class="label-right-text">Sampai: <?= date("d M Y", strtotime($l->low_tanggal_berakhir)) ?></div>
+            <div class="label-right-text"><?= $l->low_jumlah_tenaga ?> Lowongan</div>
           </div>
         </div>
       </div>

@@ -13,6 +13,7 @@ class Perusahaan extends CI_Controller
   public function detail($id)
   {
     $data['isLoggedIn'] = $this->session->userdata('isLoggedIn');
+    $data['tipe'] = $this->session->userdata('tipe');
 
     $data['perusahaan'] = $this->MPerusahaan->getOne($id);
     $data['lowongan'] = $this->MLowongan->getLowonganPerusahaan($id);
