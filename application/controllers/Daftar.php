@@ -27,36 +27,7 @@ class Daftar extends CI_Controller
 
   public function submitPelamar()
   {
-    $config['upload_path'] = "./uploads/users";
-    $config['allowed_types'] = 'gif|jpg|png';
-    $config['encrypt_name'] = TRUE;
-
-    $this->load->library('upload');
-    $this->upload->initialize($config);
-
     $data = $this->input->post();
-    if ($this->upload->do_upload('foto')) {
-      $upload = $this->upload->data();
-      $data['foto'] = $upload['file_name'];
-    } else return false;
-
-    $data['berkas'] = [];
-    for ($i = 0; $i < 4; $i++) {
-      if (!empty($_FILES['berkas']['name'][$i])) {
-
-        // Define new $_FILES array - $_FILES['file']
-        $_FILES['file']['name'] = $_FILES['berkas']['name'][$i];
-        $_FILES['file']['type'] = $_FILES['berkas']['type'][$i];
-        $_FILES['file']['tmp_name'] = $_FILES['berkas']['tmp_name'][$i];
-        $_FILES['file']['error'] = $_FILES['berkas']['error'][$i];
-        $_FILES['file']['size'] = $_FILES['berkas']['size'][$i];
-
-        if ($this->upload->do_upload('file')) {
-          $upload = $this->upload->data();
-          array_push($data['berkas'], $upload['file_name']);
-        } else return false;
-      }
-    }
 
     $this->MPelamar->signup($data);
 

@@ -1,5 +1,14 @@
 <div class="container">
-  <h4>Dashboard</h4>
+  <div class="row">
+    <div class="col s6">
+      <h4>Dashboard</h4>
+    </div>
+    <div class="col s6 right-align">
+      <br><br>
+      <a href="<?= site_url('pelamar/pelamar/edit') ?>" class="btn deep-purple">Edit Profil</a>
+    </div>
+  </div>
+
   <br>
   <h5>Cari Lowongan</h5>
   <div class="card">

@@ -34,7 +34,7 @@ class Dashboard extends CI_Controller
       $l->score += pow($idGajiLowongan + $idGajiPelamar, 2);
       // echo "$idGajiPelamar, $idGajiLowongan";
 
-      $keterampilanPelamar = json_decode($pelamar->keterampilan);
+      $keterampilanPelamar = $pelamar->keterampilan;
       $keterampilanLowongan = json_decode($l->keterampilan);
       // loop keterampilan
       foreach ($keterampilanPelamar as $key => $keterampilan) {
