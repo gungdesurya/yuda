@@ -23,7 +23,7 @@
         </div>
 
         <div class="input-field col s12">
-          <textarea id="low_deskripsi" name="low_deskripsi" class="materialize-textarea" required style="height: 200px;">Deskripsi Lowongan</textarea>
+          <textarea id="low_deskripsi" name="low_deskripsi" class="materialize-textarea" required style="height: 200px;"></textarea>
           <label for="low_deskripsi">Deskripsi</label>
         </div>
 
@@ -57,30 +57,30 @@
         </div>
 
         <div class="input-field col s12 m6">
-          <input id="low_jurusan" type="text" name="low_jurusan" required value="Ilmu Komputer" disabled>
+          <input id="low_jurusan" type="text" name="low_jurusan" required disabled>
           <label for="low_jurusan">Jurusan</label>
         </div>
 
         <div class="input-field col s12 m6 l6">
           <select name="low_status_gender" id="low_status_gender">
-            <option value="tanpa gender" selected>Tanpa Gender</option>
-            <option value="dengan gender">Dengan Gender</option>
+            <option value="tanpa_gender" selected>Tanpa Gender</option>
+            <option value="dengan_gender">Dengan Gender</option>
           </select>
           <label for="low_status_gender">Status Gender</label>
         </div>
 
         <div class="input-field col s12 m6 l2">
-          <input id="low_jumlah_tenaga" type="number" name="low_jumlah_tenaga" required value="1">
+          <input id="low_jumlah_tenaga" type="number" name="low_jumlah_tenaga" required>
           <label for="low_jumlah_tenaga">Jumlah Tenaga</label>
         </div>
 
         <div class="input-field col s12 m6 l2">
-          <input id="low_jumlah_tenaga_laki" type="number" name="low_jumlah_tenaga_laki" required value="1">
+          <input id="low_jumlah_tenaga_laki" type="number" name="low_jumlah_tenaga_laki" required>
           <label for="low_jumlah_tenaga_laki">Tenaga Pria</label>
         </div>
 
         <div class="input-field col s12 m6 l2">
-          <input id="low_jumlah_tenaga_perempuan" type="number" name="low_jumlah_tenaga_perempuan" required value="2">
+          <input id="low_jumlah_tenaga_perempuan" type="number" name="low_jumlah_tenaga_perempuan" required>
           <label for="low_jumlah_tenaga_perempuan">Tenaga Wanita</label>
         </div>
 
@@ -94,7 +94,7 @@
         </div>
 
         <div class="input-field col s12 m6">
-          <input id="low_tanggal_berakhir" type="date" name="low_tanggal_berakhir" required value="2020-11-20">
+          <input id="low_tanggal_berakhir" type="date" name="low_tanggal_berakhir" required>
           <label for="low_tanggal_berakhir">Tanggal Berakhir</label>
         </div>
 
@@ -104,7 +104,7 @@
             <?php foreach ($pendidikanNonFormal as $i => $item) : ?>
               <div class="col s12 m3">
                 <label>
-                  <input name="keterampilan[<?= $i ?>]" class="filled-in" type="checkbox" value="<?= $item->id ?>" />
+                  <input name="keterampilan[<?= $i ?>]" class="filled-in" type="checkbox" value="<?= $i ?>" />
                   <span><?= $item->nama_pendidikan ?></span>
                 </label>
               </div>
@@ -127,7 +127,7 @@
       $('#low_jumlah_tenaga_perempuan').prop('disabled', true)
 
       $('#low_status_gender').change(function(event) {
-        if (event.target.value == 'dengan gender') {
+        if (event.target.value == 'dengan_gender') {
           $('#low_jumlah_tenaga').prop('disabled', true)
           $('#low_jumlah_tenaga_laki').prop('disabled', false)
           $('#low_jumlah_tenaga_perempuan').prop('disabled', false)

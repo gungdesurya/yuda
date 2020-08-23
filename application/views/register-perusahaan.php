@@ -5,22 +5,22 @@
 
     <form class="row" action="<?= site_url('Daftar/submitPerusahaan') ?>" method="POST">
       <div class="input-field col s12 m6">
-        <input id="nama_perusahaan" type="text" name="nama_perusahaan" required value="Perusahaan ABC">
+        <input id="nama_perusahaan" type="text" name="nama_perusahaan" required>
         <label for="nama_perusahaan">Nama Perusahaan</label>
       </div>
 
       <div class="input-field col s12 m6">
-        <input id="email" type="email" name="email" required value="abc@gmail.com">
+        <input id="email" type="email" name="email" required>
         <label for="email">Email</label>
       </div>
 
       <div class="input-field col s6">
-        <input id="password" type="password" name="password" required value="123123">
+        <input id="password" type="password" name="password" required>
         <label for="password">Password</label>
       </div>
 
       <div class="input-field col s6">
-        <input id="confirm_password" type="password" name="confirm_password" required value="123123">
+        <input id="confirm_password" type="password" name="confirm_password" required>
         <label for="confirm_password">Ulangi Password</label>
       </div>
 
@@ -39,17 +39,17 @@
       </div>
 
       <div class="input-field col s12 m6 l2">
-        <input id="pen_kodepos" type="number" name="pen_kodepos" required value="08123">
+        <input id="pen_kodepos" type="number" name="pen_kodepos" required>
         <label for="pen_kodepos">Kode Pos</label>
       </div>
 
       <div class="input-field col s12 m6 l3">
-        <input id="pen_provinsi" type="text" name="pen_provinsi" required value="Bali">
+        <input id="pen_provinsi" type="text" name="pen_provinsi" required>
         <label for="pen_provinsi">Provinsi</label>
       </div>
 
       <div class="input-field col s12 m6 l3">
-        <input id="pen_kota" type="text" name="pen_kota" required value="Denpasar">
+        <input id="pen_kota" type="text" name="pen_kota" required>
         <label for="pen_kota">Kota</label>
       </div>
 

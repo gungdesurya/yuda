@@ -7,9 +7,9 @@ class MLowongan extends CI_Model
   public function create($data)
   {
     $keterampilan = [];
-    foreach ($data['keterampilan'] as $k) {
-      array_push($keterampilan, $k);
-    }
+    for ($i = 0; $i < 10; $i++) $keterampilan[$i] = false;
+
+    foreach ($data['keterampilan'] as $k) $keterampilan[$k] = true;
 
     $rangeGaji = explode(' - ', $data['range_gaji']);
 
@@ -31,7 +31,7 @@ class MLowongan extends CI_Model
     else $param->low_jurusan = "";
     $param->low_lokasi = $data['low_lokasi'];
     $param->low_status_gender = $data['low_status_gender'];
-    if ($param->low_status_gender == 'dengan gender') {
+    if ($param->low_status_gender == 'dengan_gender') {
       $param->low_jumlah_tenaga_laki = $data['low_jumlah_tenaga_laki'];
       $param->low_jumlah_tenaga_perempuan = $data['low_jumlah_tenaga_perempuan'];
       $param->low_jumlah_tenaga = $data['low_jumlah_tenaga_perempuan'] + $data['low_jumlah_tenaga_laki'];

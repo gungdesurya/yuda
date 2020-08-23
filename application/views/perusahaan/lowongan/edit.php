@@ -1,5 +1,5 @@
 <div class="container">
-  <h4>Tambah Lowongan</h4>
+  <h4>Edit Informasi Lowongan</h4>
   <br>
   <div class="card">
     <div id="test1" class="col s12" style="padding: 24px">
@@ -7,7 +7,7 @@
         <div class="input-field col s12 m6">
           <select name="kategori" id="kategori">
             <?php foreach ($kategori as $i => $k) : ?>
-              <option value="<?= $k->kategori ?>" <?= $lowongan->kategori == $k->id ? 'selected' : '' ?>><?= $k->kategori ?></option>
+              <option value="<?= $k->kategori ?>" <?= $lowongan->kategori == $k->kategori ? 'selected' : '' ?>><?= $k->kategori ?></option>
             <?php endforeach ?>
           </select>
           <label for="kategori">Kategori</label>
