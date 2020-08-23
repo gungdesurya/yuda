@@ -20,6 +20,20 @@ class MPerusahaan extends CI_Model
     return $this->db->insert('perusahaan', $param);
   }
 
+  public function edit($data, $id)
+  {
+    // print_r($data);
+    $param = new stdClass();
+    $param->nama_perusahaan = $data['nama_perusahaan'];
+    $param->jenis_perusahaan = $data['jenis_perusahaan'];
+    $param->pen_kodepos = $data['pen_kodepos'];
+    $param->pen_provinsi = $data['pen_provinsi'];
+    $param->pen_kota = $data['pen_kota'];
+
+    $this->db->where('id_perusahaan', $id);
+    return $this->db->update('perusahaan', $param);
+  }
+
   public function login($data)
   {
     return $this->db->get_where('perusahaan', ['email' => $data['email'], 'password' => $data['password']])->row();
