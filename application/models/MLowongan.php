@@ -28,6 +28,7 @@ class MLowongan extends CI_Model
     $param->status_pekerjaan = $data['status_pekerjaan'];
     $param->pendidikan_minimal = $data['pendidikan_minimal'];
     if ($data['pendidikan_minimal'] == 'S1' or $data['pendidikan_minimal'] == 'SMA/SMK') $param->low_jurusan = $data['low_jurusan'];
+    else $param->low_jurusan = "";
     $param->low_lokasi = $data['low_lokasi'];
     $param->low_status_gender = $data['low_status_gender'];
     if ($param->low_status_gender == 'dengan gender') {
@@ -49,20 +50,41 @@ class MLowongan extends CI_Model
   public function edit($data, $id)
   {
     $keterampilan = [];
-    foreach ($data['keterampilan'] as $k) {
-      array_push($keterampilan, $k);
-    }
+    for ($i = 0; $i < 10; $i++) $keterampilan[$i] = false;
+
+    foreach ($data['pendidikan_non_formal'] as $k) $keterampilan[$k] = true;
+
+    $rangeGaji = explode(' - ', $data['range_gaji']);
+
+    $start_date = date(time());
+    // echo $start_date;
+    $end_date = strtotime($data['low_tanggal_berakhir']);
+    $lowongan_berakhir = ceil(($end_date - $start_date) / 60 / 60 / 24);
 
     $param = new stdClass();
-    $param->nama_loker = $data['nama_loker'];
-    $param->deskripsi = $data['deskripsi'];
-    $param->range_gaji = $data['range_gaji'];
-    $param->deskripsi = $data['deskripsi'];
+    $param->kategori = $data['kategori'];
+    $param->range_gaji_dari = $rangeGaji[0];
+    $param->range_gaji_sampai = $rangeGaji[1];
     $param->keterampilan = json_encode($keterampilan);
-    $param->pendidikan = $data['pendidikan'];
-    if ($data['pendidikan'] == 'S1') $param->jurusan = $data['jurusan'];
-    $param->pengalaman_kerja = $data['pengalaman_kerja'];
-    $param->kategori_pekerjaan = $data['kategori_pekerjaan'];
+    $param->jenis_gaji = $data['jenis_gaji'];
+    $param->status_pekerjaan = $data['status_pekerjaan'];
+    $param->pendidikan_minimal = $data['pendidikan_minimal'];
+    if ($data['pendidikan_minimal'] == 'S1' or $data['pendidikan_minimal'] == 'SMA/SMK') $param->low_jurusan = $data['low_jurusan'];
+    else $param->low_jurusan = "";
+    $param->low_lokasi = $data['low_lokasi'];
+    $param->low_status_gender = $data['low_status_gender'];
+    if ($param->low_status_gender == 'dengan_gender') {
+      $param->low_jumlah_tenaga_laki = $data['low_jumlah_tenaga_laki'];
+      $param->low_jumlah_tenaga_perempuan = $data['low_jumlah_tenaga_perempuan'];
+      $param->low_jumlah_tenaga = $data['low_jumlah_tenaga_perempuan'] + $data['low_jumlah_tenaga_laki'];
+    } else {
+      $param->low_jumlah_tenaga = $data['low_jumlah_tenaga'];
+    }
+    $param->low_deskripsi = $data['low_deskripsi'];
+    $param->low_tanggal = date('Y-m-d', $start_date);
+    // echo date('Y-m-d', time());
+    $param->low_tanggal_berakhir = $data['low_tanggal_berakhir'];
+    $param->low_masa_berlaku = $lowongan_berakhir;
 
     $this->db->where('id', $id);
     return $this->db->update('lowongan', $param);
@@ -102,6 +124,7 @@ class MLowongan extends CI_Model
       ->row();
 
     $lowongan->range_gaji = "$lowongan->range_gaji_dari - $lowongan->range_gaji_sampai";
+    $lowongan->keterampilan = json_decode($lowongan->keterampilan);
     return $lowongan;
   }
 

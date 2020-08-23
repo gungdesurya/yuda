@@ -44,10 +44,10 @@ class Lowongan extends CI_Controller
   public function generateKeterampilan()
   {
     for ($i = 22; $i < 5060; $i++) {
-      $length = rand(1, 10);
       $keterampilan = [];
-      for ($j = 0; $j < $length; $j++) {
-        array_push($keterampilan, rand(1, 10));
+      for ($j = 0; $j < 10; $j++) {
+        $value = rand(0, 1);
+        $keterampilan[$j] = $value == 0 ? false : true;
       }
       // print_r(json_encode($keterampilan));
 

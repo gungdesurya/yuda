@@ -7,7 +7,7 @@
         <div class="input-field col s12 m6">
           <select name="kategori" id="kategori">
             <?php foreach ($kategori as $i => $k) : ?>
-              <option value="<?= $k->id ?>" <?= $lowongan->kategori == $k->id ? 'selected' : '' ?>><?= $k->kategori ?></option>
+              <option value="<?= $k->kategori ?>" <?= $lowongan->kategori == $k->id ? 'selected' : '' ?>><?= $k->kategori ?></option>
             <?php endforeach ?>
           </select>
           <label for="kategori">Kategori</label>
@@ -57,30 +57,30 @@
         </div>
 
         <div class="input-field col s12 m6">
-          <input id="low_jurusan" type="text" name="low_jurusan" required value="<?= $lowongan->low_jurusan ?>" <?= $lowongan->pendidikan_minimal == 'S1' ? '' : 'disabled' ?>>
+          <input id="low_jurusan" type="text" name="low_jurusan" required value="<?= $lowongan->low_jurusan ?>" <?= ($lowongan->pendidikan_minimal == 'S1' or $lowongan->pendidikan_minimal == 'SMA/SMK') ? '' : 'disabled' ?>>
           <label for="low_jurusan">Jurusan</label>
         </div>
 
         <div class="input-field col s12 m6 l6">
           <select name="low_status_gender" id="low_status_gender">
-            <option value="tanpa gender" <?= $lowongan->low_status_gender == 'tanpa gender' ? 'selected' : '' ?>>Tanpa Gender</option>
-            <option value="dengan gender" <?= $lowongan->low_status_gender == 'dengan gender' ? 'selected' : '' ?>>Dengan Gender</option>
+            <option value="tanpa_gender" <?= $lowongan->low_status_gender == 'tanpa_gender' ? 'selected' : '' ?>>Tanpa Gender</option>
+            <option value="dengan_gender" <?= $lowongan->low_status_gender == 'dengan_gender' ? 'selected' : '' ?>>Dengan Gender</option>
           </select>
           <label for="low_status_gender">Status Gender</label>
         </div>
 
         <div class="input-field col s12 m6 l2">
-          <input id="low_jumlah_tenaga" type="number" name="low_jumlah_tenaga" required value="<?= $lowongan->low_jumlah_tenaga ?>">
+          <input id="low_jumlah_tenaga" type="number" name="low_jumlah_tenaga" required value="<?= $lowongan->low_jumlah_tenaga ?>" <?= $lowongan->low_status_gender == 'tanpa_gender' ? '' : 'disabled' ?>>
           <label for="low_jumlah_tenaga">Jumlah Tenaga</label>
         </div>
 
         <div class="input-field col s12 m6 l2">
-          <input id="low_jumlah_tenaga_laki" type="number" name="low_jumlah_tenaga_laki" required value="<?= $lowongan->low_jumlah_tenaga_laki ?>">
+          <input id="low_jumlah_tenaga_laki" type="number" name="low_jumlah_tenaga_laki" required value="<?= $lowongan->low_jumlah_tenaga_laki ?>" <?= $lowongan->low_status_gender == 'dengan_gender' ? '' : 'disabled' ?>>
           <label for="low_jumlah_tenaga_laki">Tenaga Pria</label>
         </div>
 
         <div class="input-field col s12 m6 l2">
-          <input id="low_jumlah_tenaga_perempuan" type="number" name="low_jumlah_tenaga_perempuan" required value="<?= $lowongan->low_jumlah_tenaga_perempuan ?>">
+          <input id="low_jumlah_tenaga_perempuan" type="number" name="low_jumlah_tenaga_perempuan" required value="<?= $lowongan->low_jumlah_tenaga_perempuan ?>" <?= $lowongan->low_status_gender == 'dengan_gender' ? '' : 'disabled' ?>>
           <label for="low_jumlah_tenaga_perempuan">Tenaga Wanita</label>
         </div>
 
@@ -98,29 +98,20 @@
           <label for="low_tanggal_berakhir">Tanggal Berakhir</label>
         </div>
 
-        <!-- <div class="col s12 form-group">
+        <div class="col s12 form-group">
           <div>Keterampilan</div>
           <div class="row">
             <?php foreach ($pendidikanNonFormal as $i => $item) : ?>
               <div class="col s12 m3">
                 <label>
-                  <?php
-                  $selected = false;
-                  foreach ($currPNF as $key => $p) {
-                    if ($p == $item->id) {
-                      $selected = true;
-                      break;
-                    }
-                  }
-                  ?>
-                  <input name="keterampilan[<?= $i ?>]" class="filled-in" type="checkbox" value="<?= $item->id ?>" <?= $selected ? 'checked' : '' ?> />
+                  <input name="pendidikan_non_formal[<?= $i ?>]" class="filled-in" type="checkbox" value="<?= $i ?>" <?= $lowongan->keterampilan[$i] ? 'checked' : '' ?> />
                   <span><?= $item->nama_pendidikan ?></span>
                 </label>
               </div>
             <?php endforeach ?>
 
           </div>
-        </div> -->
+        </div>
 
         <div class="col s12 right-align">
           <input type="submit" value="Edit" class="btn deep-purple">
@@ -132,11 +123,9 @@
 
   <script>
     $(document).ready(function() {
-      // $('#low_jumlah_tenaga_laki').prop('disabled', true)
-      // $('#low_jumlah_tenaga_perempuan').prop('disabled', true)
 
       $('#low_status_gender').change(function(event) {
-        if (event.target.value == 'dengan gender') {
+        if (event.target.value == 'dengan_gender') {
           $('#low_jumlah_tenaga').prop('disabled', true)
           $('#low_jumlah_tenaga_laki').prop('disabled', false)
           $('#low_jumlah_tenaga_perempuan').prop('disabled', false)
