@@ -17,10 +17,11 @@ class Dashboard extends CI_Controller
     $data['tipe'] = $this->session->userdata('tipe');
     if (!$data['isLoggedIn']) redirect(base_url() . 'Home', 'refresh');
 
-    // get semua lowongan
-    $lowongan = $this->MLowongan->getLowongan();
     // get profil
     $pelamar = $this->MPelamar->getOne($this->session->userdata('id'));
+    $pendidikanMinPelamar = $this->getPendidikanMinPelamar($pelamar->tahun);
+    // get semua lowongan
+    $lowongan = $this->MLowongan->getLowongan('', '', $pelamar->jk, $pendidikanMinPelamar);
 
     $rangeGaji = [null, "0 - 1000000", "1000000 - 2500000", "2500000 - 5000000", "5000000 - 10000000"];
 
@@ -80,5 +81,14 @@ class Dashboard extends CI_Controller
       }
     }
     return false;
+  }
+
+  private function getPendidikanMinPelamar($tahun)
+  {
+    if ($tahun[3] != "") return "S1";
+    else if ($tahun[2] != "") return "SMA/SMK";
+    else if ($tahun[1] != "") return "SMP";
+    else if ($tahun[0] != "") return "SD";
+    else return 0;
   }
 }

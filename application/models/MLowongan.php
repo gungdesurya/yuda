@@ -101,11 +101,17 @@ class MLowongan extends CI_Model
       ->result();
   }
 
-  public function getLowongan($nama = '', $kategori = '')
+  public function getLowongan($nama = '', $kategori = '', $jk = '', $pendidikanMin = '')
   {
     $where = "low_jurusan like '%$nama%' AND low_tanggal_berakhir >= '2020-01-01'";
     // $where = "low_jurusan like '%$nama%' AND low_tanggal_berakhir >= CURRENT_TIMESTAMP()";
     if ($kategori != '') $where .= " AND kategori = '$kategori'";
+
+    if ($jk == 'l') $where .= " AND low_jumlah_tenaga_laki > 0";
+    else if ($jk == 'p') $where .= " AND low_jumlah_tenaga_perempuan > 0";
+
+    if ($pendidikanMin != '') $where .= " AND pendidikan_minimal = '$pendidikanMin'";
+
     return $this->db
       ->select('lowongan.*, perusahaan.nama_perusahaan')
       ->where($where)
