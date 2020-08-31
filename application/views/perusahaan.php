@@ -15,12 +15,12 @@
 
             <div class="chipslist">
               <?php if ($l->pendidikan_minimal) : ?>
-                <div class="chip deep-purple darken-1 white-text"><?= $l->pendidikan_minimal ?></div>
+                <div class="chip blue darken-3 white-text"><?= $l->pendidikan_minimal ?></div>
               <?php endif ?>
               <?php if ($l->low_jurusan) : ?>
-                <div class="chip deep-purple darken-1 white-text"><?= $l->low_jurusan ?></div>
+                <div class="chip blue darken-3 white-text"><?= $l->low_jurusan ?></div>
               <?php endif ?>
-              <div class="chip deep-purple darken-1 white-text"><?= $l->kategori ?></div>
+              <div class="chip blue darken-3 white-text"><?= $l->kategori ?></div>
             </div>
           </div>
           <div class="col s12 m4 right-align">

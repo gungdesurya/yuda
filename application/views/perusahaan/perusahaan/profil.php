@@ -7,7 +7,7 @@
     </div>
     <div class="col s12 m4 right-align">
       <br><br>
-      <a href="<?= site_url('perusahaan-s/perusahaan/edit') ?>" class="btn deep-purple">Edit Profil</a>
+      <a href="<?= site_url('perusahaan-s/perusahaan/edit') ?>" class="btn blue darken-3">Edit Profil</a>
     </div>
   </div>
   <br>
@@ -17,7 +17,7 @@
       <h5>Lowongan Anda</h5>
     </div>
     <div class="col s6 right-align">
-      <a href="<?= site_url('perusahaan-s/Lowongan/create') ?>" class="btn deep-purple">Buat Lowongan</a>
+      <a href="<?= site_url('perusahaan-s/Lowongan/create') ?>" class="btn blue darken-3">Buat Lowongan</a>
     </div>
   </div>
   <div class="lowongan-list card">
@@ -30,16 +30,16 @@
 
             <div class="chipslist">
               <?php if ($l->pendidikan_minimal) : ?>
-                <div class="chip deep-purple darken-1 white-text"><?= $l->pendidikan_minimal ?></div>
+                <div class="chip blue darken-3 white-text"><?= $l->pendidikan_minimal ?></div>
               <?php endif ?>
               <?php if ($l->low_jurusan) : ?>
-                <div class="chip deep-purple darken-1 white-text"><?= $l->low_jurusan ?></div>
+                <div class="chip blue darken-3 white-text"><?= $l->low_jurusan ?></div>
               <?php endif ?>
-              <div class="chip deep-purple darken-1 white-text"><?= $l->kategori ?></div>
+              <div class="chip blue darken-3 white-text"><?= $l->kategori ?></div>
             </div>
           </div>
           <div class="col s12 m4 right-align">
-            <a class="btn deep-purple" href="<?= site_url('perusahaan-s/Lowongan/edit/' . $l->id) ?>">Edit</a>
+            <a class="btn blue darken-3" href="<?= site_url('perusahaan-s/Lowongan/edit/' . $l->id) ?>">Edit</a>
             <button class="btn red" onclick="onDelete(<?= $l->id ?>)">Hapus</button>
 
             <div class="label-right-text">Sampai: <?= date("d M Y", strtotime($l->low_tanggal_berakhir)) ?></div>

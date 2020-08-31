@@ -5,7 +5,7 @@
     </div>
     <div class="col s6 right-align">
       <br><br>
-      <a href="<?= site_url('pelamar/pelamar/edit') ?>" class="btn deep-purple">Edit Profil</a>
+      <a href="<?= site_url('pelamar/pelamar/edit') ?>" class="btn blue">Edit Profil</a>
     </div>
   </div>
 
@@ -29,7 +29,7 @@
             <label for="nama">Cari Jurusan</label>
           </div>
           <div class="input-field col s12 m2">
-            <button type="submit" class="waves-effect waves-light btn deep-orange">Cari</button>
+            <button type="submit" class="waves-effect waves-light btn blue">Cari</button>
           </div>
 
         </div>
@@ -51,12 +51,12 @@
 
             <div class="chipslist">
               <?php if ($l->pendidikan_minimal) : ?>
-                <div class="chip deep-purple darken-1 white-text"><?= $l->pendidikan_minimal ?></div>
+                <div class="chip blue darken-3 white-text"><?= $l->pendidikan_minimal ?></div>
               <?php endif ?>
               <?php if ($l->low_jurusan) : ?>
-                <div class="chip deep-purple darken-1 white-text"><?= $l->low_jurusan ?></div>
+                <div class="chip blue darken-3 white-text"><?= $l->low_jurusan ?></div>
               <?php endif ?>
-              <div class="chip deep-purple darken-1 white-text"><?= $l->kategori ?></div>
+              <div class="chip blue darken-3 white-text"><?= $l->kategori ?></div>
             </div>
           </div>
           <div class="col s12 m4 right-align">

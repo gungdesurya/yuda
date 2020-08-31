@@ -14,7 +14,7 @@
         </div>
 
         <div class="input-field">
-          <button class="btn deep-purple" type="submit" style="width: 100%">Login</button>
+          <button class="btn blue darken-3" type="submit" style="width: 100%">Login</button>
         </div>
       </form>
     </div>

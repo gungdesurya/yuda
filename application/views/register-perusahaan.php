@@ -54,7 +54,7 @@
       </div>
 
       <div class="col s12 right-align">
-        <input type="submit" value="Daftar" class="btn deep-purple">
+        <input type="submit" value="Daftar" class="btn blue darken-3">
       </div>
     </form>
 

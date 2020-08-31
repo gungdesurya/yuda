@@ -22,7 +22,7 @@
       </form>
     </div>
     <div class="card-action">
-      <button type="submit" form="searchform" class="waves-effect waves-light btn deep-orange">Cari Lowongan</button>
+      <button type="submit" form="searchform" class="waves-effect waves-light btn blue">Cari Lowongan</button>
     </div>
   </div>
 </div>
