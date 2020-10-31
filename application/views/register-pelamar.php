@@ -96,15 +96,9 @@
       <div id="test2" class="col s12" style="padding: 24px">
         <form action="#" class="row" id="form2">
           <div class="row">
+            <!-- SD PENDIDIKAN PELAMAR  -->
             <div class="col s12 m6">
               <h6><b>SD</b></h6>
-            </div>
-
-            <div class="col s12 m6">
-              <h6><b>SMP</b></h6>
-            </div>
-
-            <div class="input-field col s12 m3">
               <input type="hidden" name="jurusan[0]" value="">
             </div>
 
@@ -112,27 +106,26 @@
               <select name="tahun[0]">
                 <option value="" selected>Kosong</option>
                 <?php
-                $thn_skr = date('Y');
-                for ($x = $thn_skr; $x >= 1980; $x--) {
+                  $thn_skr = date('Y');
+                  for ($x = $thn_skr; $x >= 1980; $x--) {
                 ?>
                   <option value="<?php echo "$x/" . ($x + 1) ?>"><?php echo "$x/" . ($x + 1) ?></option>
-                <?php
-                }
-                ?>
+                <?php } ?>
               </select>
               <label for="first_name">Tahun</label>
             </div>
 
-            <!-- <div class="col s12 m4">
+            <div class="col s12 m3">
               <label for="file0">Berkas</label>
               <div class="input-field">
                 <input id="file0" type="file" name="berkas[0]" required>
               </div>
+            </div>
+            <!-- END SD PENDIDIKAN FORMAL -->
 
-            </div> -->
-
-
-            <div class="input-field col s12 m3">
+            <!-- SMP PENDIDIKAN FORMAL -->
+            <div class="col s12 m6">
+              <h6><b>SMP</b></h6>
               <input type="hidden" name="jurusan[1]" value="">
             </div>
 
@@ -140,29 +133,27 @@
               <select name="tahun[1]">
                 <option value="" selected>Kosong</option>
                 <?php
-                $thn_skr = date('Y');
-                for ($x = $thn_skr; $x >= 1980; $x--) {
+                  $thn_skr = date('Y');
+                  for ($x = $thn_skr; $x >= 1980; $x--) {
                 ?>
                   <option value="<?php echo "$x/" . ($x + 1) ?>"><?php echo "$x/" . ($x + 1) ?></option>
-                <?php
-                }
-                ?>
+                <?php } ?>
               </select>
               <label for="first_name">Tahun</label>
             </div>
 
-            <!-- <div class="col s12 m4">
+            <div class="col s12 m3">
               <label for="file1">Berkas</label>
               <div class="input-field">
                 <input id="file1" type="file" name="berkas[1]" required>
               </div>
-            </div> -->
-
-            <div class="col s12 m6">
-              <h6><b>SMA/SMK</b></h6>
             </div>
-            <div class="col s12 m6">
-              <h6><b>S1</b></h6>
+            <!-- END SMP PENDIDIKAN FORMAL -->
+
+            <!-- SMA PENDIDIKAN FORMAL -->
+            <div class="col s12">&nbsp;</div>
+            <div class="col s12 m3">
+              <h6><b>SMA/SMK</b></h6>
             </div>
 
             <div class="input-field col s12 m3">
@@ -174,51 +165,150 @@
               <select name="tahun[2]">
                 <option value="" selected>Kosong</option>
                 <?php
-                $thn_skr = date('Y');
-                for ($x = $thn_skr; $x >= 1980; $x--) {
+                  $thn_skr = date('Y');
+                  for ($x = $thn_skr; $x >= 1980; $x--) {
                 ?>
                   <option value="<?php echo "$x/" . ($x + 1) ?>"><?php echo "$x/" . ($x + 1) ?></option>
-                <?php
-                }
-                ?>
+                <?php } ?>
               </select>
               <label for="first_name">Tahun</label>
             </div>
 
-            <!-- <div class="col s12 m4">
+            <div class="col s12 m3">
               <label for="file2">Ijazah</label>
               <div class="input-field">
                 <input id="file2" type="file" name="berkas[2]" required>
               </div>
-            </div> -->
+            </div>
+            <!-- END SMA PENDIDIKAN FORMAL -->
 
+            <!-- D1 PENDIDIKAN FORMAL -->
+            <div class="col s12">&nbsp;</div>
+            <div class="col s12 m3">
+              <h6><b>D1</b></h6>
+            </div>
 
             <div class="input-field col s12 m3">
-              <input id="jurusan_s1" type="text" class="validate" name="jurusan[3]">
-              <label for="jurusan_s1">Jurusan</label>
+              <input id="jurusan_d1" type="text" class="validate" name="jurusan[3]">
+              <label for="jurusan_d1">Jurusan</label>
             </div>
 
             <div class="input-field col s12 m3">
               <select name="tahun[3]">
                 <option value="" selected>Kosong</option>
                 <?php
-                $thn_skr = date('Y');
-                for ($x = $thn_skr; $x >= 1980; $x--) {
+                  $thn_skr = date('Y');
+                  for ($x = $thn_skr; $x >= 1980; $x--) {
                 ?>
                   <option value="<?php echo "$x/" . ($x + 1) ?>"><?php echo "$x/" . ($x + 1) ?></option>
-                <?php
-                }
-                ?>
+                <?php } ?>
               </select>
               <label for="first_name">Tahun</label>
             </div>
 
-            <!-- <div class="col s12 m4">
+            <div class="col s12 m3">
               <label for="file3">Ijazah</label>
               <div class="input-field">
                 <input id="file3" type="file" name="berkas[3]" required>
               </div>
-            </div> -->
+            </div>
+            <!-- END D1 PENDIDIKAN FORMAL -->
+
+            <!-- D2 PENDIDIKAN FORMAL -->
+            <div class="col s12">&nbsp;</div>
+            <div class="col s12 m3">
+              <h6><b>D2</b></h6>
+            </div>
+
+            <div class="input-field col s12 m3">
+              <input id="jurusan_d2" type="text" class="validate" name="jurusan[4]">
+              <label for="jurusan_d2">Jurusan</label>
+            </div>
+
+            <div class="input-field col s12 m3">
+              <select name="tahun[4]">
+                <option value="" selected>Kosong</option>
+                <?php
+                  $thn_skr = date('Y');
+                  for ($x = $thn_skr; $x >= 1980; $x--) {
+                ?>
+                  <option value="<?php echo "$x/" . ($x + 1) ?>"><?php echo "$x/" . ($x + 1) ?></option>
+                <?php } ?>
+              </select>
+              <label for="first_name">Tahun</label>
+            </div>
+
+            <div class="col s12 m3">
+              <label for="file4">Ijazah</label>
+              <div class="input-field">
+                <input id="file4" type="file" name="berkas[4]" required>
+              </div>
+            </div>
+            <!-- END D2 PENDIDIKAN FORMAL -->
+
+            <!-- D3 PENDIDIKAN FORMAL -->
+            <div class="col s12">&nbsp;</div>
+            <div class="col s12 m3">
+              <h6><b>D3</b></h6>
+            </div>
+
+            <div class="input-field col s12 m3">
+              <input id="jurusan_d3" type="text" class="validate" name="jurusan[5]">
+              <label for="jurusan_d3">Jurusan</label>
+            </div>
+
+            <div class="input-field col s12 m3">
+              <select name="tahun[5]">
+                <option value="" selected>Kosong</option>
+                <?php
+                  $thn_skr = date('Y');
+                  for ($x = $thn_skr; $x >= 1980; $x--) {
+                ?>
+                  <option value="<?php echo "$x/" . ($x + 1) ?>"><?php echo "$x/" . ($x + 1) ?></option>
+                <?php } ?>
+              </select>
+              <label for="first_name">Tahun</label>
+            </div>
+
+            <div class="col s12 m3">
+              <label for="file5">Ijazah</label>
+              <div class="input-field">
+                <input id="file5" type="file" name="berkas[5]" required>
+              </div>
+            </div>
+            <!-- END D3 PENDIDIKAN FORMAL -->
+
+            <!-- S1 PENDIDIKAN FORMAL -->
+            <div class="col s12">&nbsp;</div>
+            <div class="col s12 m3">
+              <h6><b>S1</b></h6>
+            </div>
+
+            <div class="input-field col s12 m3">
+              <input id="jurusan_s1" type="text" class="validate" name="jurusan[6]">
+              <label for="jurusan_s1">Jurusan</label>
+            </div>
+
+            <div class="input-field col s12 m3">
+              <select name="tahun[6]">
+                <option value="" selected>Kosong</option>
+                <?php
+                  $thn_skr = date('Y');
+                  for ($x = $thn_skr; $x >= 1980; $x--) {
+                ?>
+                  <option value="<?php echo "$x/" . ($x + 1) ?>"><?php echo "$x/" . ($x + 1) ?></option>
+                <?php } ?>
+              </select>
+              <label for="first_name">Tahun</label>
+            </div>
+
+            <div class="col s12 m3">
+              <label for="file6">Ijazah</label>
+              <div class="input-field">
+                <input id="file6" type="file" name="berkas[6]" required>
+              </div>
+            </div>
+            <!-- END S1 PENDIDIKAN FORMAL -->
 
             <div class="col s6">
               <input type="button" value="Back" class="btn red" id="back2">
