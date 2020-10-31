@@ -24,7 +24,7 @@ class MPelamar extends CI_Model
     $param->rangegaji = $data['gaji_diinginkan'];
     $param->pengalaman_kerja = $data['pengalaman_kerja'];
     $param->agama = $data['agama'];
-    $param->pendidikan = json_encode(["SD", "SMP", "SMA/SMK", "D1", "D2", "D3", "S1"]);
+    $param->pendidikan = json_encode(["SD", "SMP", "SMA/SMK", "Diploma I", "Diploma II", "Diploma III", "Diploma IV"]);
     $param->jurusan = json_encode($data['jurusan']);
     $param->tahun = json_encode($data['tahun']);
     $param->keterampilan = json_encode($keterampilan);
@@ -49,7 +49,7 @@ class MPelamar extends CI_Model
     $param->rangegaji = $data['gaji_diinginkan'];
     $param->pengalaman_kerja = $data['pengalaman_kerja'];
     $param->agama = $data['agama'];
-    $param->pendidikan = json_encode(["SD", "SMP", "SMA/SMK", "S1"]);
+    $param->pendidikan = json_encode(["SD", "SMP", "SMA/SMK", "Diploma I", "Diploma II", "Diploma III", "Diploma IV"]);
     $param->jurusan = json_encode($data['jurusan']);
     $param->tahun = json_encode($data['tahun']);
     $param->keterampilan = json_encode($keterampilan);

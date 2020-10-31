@@ -51,7 +51,10 @@
             <option value="SD" selected>SD</option>
             <option value="SMP">SMP</option>
             <option value="SMA/SMK">SMA/SMK</option>
-            <option value="S1">S1</option>
+            <option value="Diploma I">Diploma I</option>
+            <option value="Diploma II">Diploma II</option>
+            <option value="Diploma III">Diploma III</option>
+            <option value="Diploma IV">Diploma IV/S1</option>
           </select>
           <label for="pendidikan_minimal">Pendidikan Minimal</label>
         </div>
@@ -114,7 +117,7 @@
         </div>
 
         <div class="col s12 right-align">
-          <input type="submit" value="Tambah" class="btn deep-purple">
+          <input type="submit" value="Tambah" class="btn blue darken-3">
         </div>
       </form>
     </div>
@@ -139,7 +142,13 @@
       });
 
       $('#pendidikan_minimal').change(function(event) {
-        if (event.target.value == 'S1' || event.target.value == 'SMA/SMK') $('#low_jurusan').prop('disabled', false)
+        if (
+          event.target.value == 'Diploma I' ||
+          event.target.value == 'Diploma II' ||
+          event.target.value == 'Diploma III' ||
+          event.target.value == 'Diploma IV' ||
+          event.target.value == 'SMA/SMK'
+        ) $('#low_jurusan').prop('disabled', false)
         else $('#low_jurusan').prop('disabled', true)
       });
 

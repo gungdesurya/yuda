@@ -1,5 +1,6 @@
 body {
   background-color: #eceff1;
+  font-family: Quicksand !important;
 }
 
 nav .brand-logo {
@@ -7,7 +8,11 @@ nav .brand-logo {
 }
 
 a {
-  color: #f4511e;
+  color: #1565c0;
+}
+
+button {
+  font-family: Quicksand !important;
 }
 
 .row {
@@ -19,7 +24,7 @@ a {
 }
 
 .dropdown-content a {
-  color: #f4511e !important;
+  color: #1565c0 !important;
 }
 
 .chipslist {
@@ -163,5 +168,14 @@ a {
 .login-form {
   margin: 30vh auto 0 auto;
   max-width: 360px;
+}
+
+.tabs .indicator {
+  background-color: #1565c0 !important;
+}
+
+.tabs .tab a:focus,
+.tabs .tab a:focus.active {
+  background-color: #e3f2fd !important;
 }
 /*# sourceMappingURL=styles.css.map */

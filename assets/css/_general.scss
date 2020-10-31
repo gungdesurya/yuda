@@ -1,5 +1,6 @@
 body {
 	background-color: #eceff1;
+	font-family: Quicksand !important;
 }
 
 nav {
@@ -9,7 +10,11 @@ nav {
 }
 
 a {
-	color: #f4511e;
+	color: #1565c0;
+}
+
+button {
+	font-family: Quicksand !important;
 }
 
 .row {
@@ -19,7 +24,7 @@ a {
 .dropdown-content {
 	width: 200px !important;
 	a {
-		color: #f4511e !important;
+		color: #1565c0 !important;
 	}
 }
 
@@ -157,4 +162,14 @@ a {
 .login-form {
 	margin: 30vh auto 0 auto;
 	max-width: 360px;
+}
+
+.tabs {
+	.indicator {
+		background-color: #1565c0 !important;
+	}
+	.tab a:focus,
+	.tab a:focus.active {
+		background-color: #e3f2fd !important;
+	}
 }

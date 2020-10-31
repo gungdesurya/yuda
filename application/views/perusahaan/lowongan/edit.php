@@ -51,13 +51,20 @@
             <option value="SD" <?= $lowongan->pendidikan_minimal == 'SD' ? 'selected' : '' ?>>SD</option>
             <option value="SMP" <?= $lowongan->pendidikan_minimal == 'SMP' ? 'selected' : '' ?>>SMP</option>
             <option value="SMA/SMK" <?= $lowongan->pendidikan_minimal == 'SMA/SMK' ? 'selected' : '' ?>>SMA/SMK</option>
-            <option value="S1" <?= $lowongan->pendidikan_minimal == 'S1' ? 'selected' : '' ?>>S1</option>
+            <option value="Diploma I" <?= $lowongan->pendidikan_minimal == 'S1' ? 'selected' : '' ?>>Diploma I</option>
+            <option value="Diploma II" <?= $lowongan->pendidikan_minimal == 'S1' ? 'selected' : '' ?>>Diploma II</option>
+            <option value="Diploma III" <?= $lowongan->pendidikan_minimal == 'S1' ? 'selected' : '' ?>>Diploma III</option>
+            <option value="Diploma IV" <?= $lowongan->pendidikan_minimal == 'S1' ? 'selected' : '' ?>>Diploma IV/S1</option>
           </select>
           <label for="pendidikan_minimal">Pendidikan</label>
         </div>
 
         <div class="input-field col s12 m6">
-          <input id="low_jurusan" type="text" name="low_jurusan" required value="<?= $lowongan->low_jurusan ?>" <?= ($lowongan->pendidikan_minimal == 'S1' or $lowongan->pendidikan_minimal == 'SMA/SMK') ? '' : 'disabled' ?>>
+          <input id="low_jurusan" type="text" name="low_jurusan" required value="<?= $lowongan->low_jurusan ?>" <?= ($lowongan->pendidikan_minimal == 'Diploma I' or
+                                                                                                                  $lowongan->pendidikan_minimal == 'Diploma II' or
+                                                                                                                  $lowongan->pendidikan_minimal == 'Diploma III' or
+                                                                                                                  $lowongan->pendidikan_minimal == 'Diploma IV' or
+                                                                                                                  $lowongan->pendidikan_minimal == 'SMA/SMK') ? '' : 'disabled' ?>>
           <label for="low_jurusan">Jurusan</label>
         </div>
 
@@ -114,7 +121,7 @@
         </div>
 
         <div class="col s12 right-align">
-          <input type="submit" value="Edit" class="btn deep-purple">
+          <input type="submit" value="Edit" class="btn blue darken-3">
         </div>
       </form>
     </div>
@@ -137,7 +144,13 @@
       });
 
       $('#pendidikan_minimal').change(function(event) {
-        if (event.target.value == 'S1' || event.target.value == 'SMA/SMK') $('#low_jurusan').prop('disabled', false)
+        if (
+          event.target.value == 'Diploma I' ||
+          event.target.value == 'Diploma II' ||
+          event.target.value == 'Diploma III' ||
+          event.target.value == 'Diploma IV' ||
+          event.target.value == 'SMA/SMK'
+        ) $('#low_jurusan').prop('disabled', false)
         else $('#low_jurusan').prop('disabled', true)
       });
 

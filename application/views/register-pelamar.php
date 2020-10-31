@@ -5,10 +5,10 @@
     <div class="row">
       <div class="col s12">
         <ul class="tabs" id="tabs">
-          <li class="tab col s3" id="menu1"><a class="active deep-orange-text text-darken-1" href="#test1">Informasi Umum</a></li>
-          <li class="tab col s3 disabled" id="menu2"><a class="deep-orange-text text-darken-1" href="#test2">Pendidikan Formal</a></li>
-          <li class="tab col s3 disabled" id="menu3"><a class="deep-orange-text text-darken-1" href="#test3">Pendidikan Non-Formal</a></li>
-          <li class="tab col s3 disabled" id="menu4"><a class="deep-orange-text text-darken-1" href="#test4">Pekerjaan</a></li>
+          <li class="tab col s3" id="menu1"><a class="active blue-text text-darken-1" href="#test1">Informasi Umum</a></li>
+          <li class="tab col s3 disabled" id="menu2"><a class="blue-text text-darken-1" href="#test2">Pendidikan Formal</a></li>
+          <li class="tab col s3 disabled" id="menu3"><a class="blue-text text-darken-1" href="#test3">Pendidikan Non-Formal</a></li>
+          <li class="tab col s3 disabled" id="menu4"><a class="blue-text text-darken-1" href="#test4">Pekerjaan</a></li>
         </ul>
       </div>
       <div id="test1" class="col s12" style="padding: 24px">
@@ -88,7 +88,7 @@
           </div>
 
           <div class="col s12 right-align">
-            <input type="submit" value="Next" class="btn deep-purple">
+            <input type="submit" value="Next" class="btn blue darken-3">
           </div>
         </form>
       </div>
@@ -314,7 +314,7 @@
               <input type="button" value="Back" class="btn red" id="back2">
             </div>
             <div class="col s6 right-align">
-              <input type="submit" value="Next" class="btn deep-purple">
+              <input type="submit" value="Next" class="btn blue">
             </div>
           </div>
 
@@ -344,7 +344,7 @@
               <input type="button" value="Back" class="btn red" id="back3">
             </div>
             <div class="col s6 right-align">
-              <input type="submit" value="Next" class="btn deep-purple">
+              <input type="submit" value="Next" class="btn blue">
             </div>
           </div>
         </form>
@@ -382,7 +382,7 @@
               <input type="button" value="Back" class="btn red" id="back4">
             </div>
             <div class="col s6 right-align">
-              <input type="submit" value="Daftar" class="btn deep-purple">
+              <input type="submit" value="Daftar" class="btn blue">
             </div>
 
           </div>
