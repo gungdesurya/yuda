@@ -26,6 +26,7 @@ class MPelamar extends CI_Model
     $param->agama = $data['agama'];
     $param->pendidikan = json_encode(["SD", "SMP", "SMA/SMK", "Diploma I", "Diploma II", "Diploma III", "Diploma IV"]);
     $param->jurusan = json_encode($data['jurusan']);
+    $param->ijazah = json_encode($data['berkas']);
     $param->tahun = json_encode($data['tahun']);
     $param->keterampilan = json_encode($keterampilan);
     return $this->db->insert('pelamar', $param);

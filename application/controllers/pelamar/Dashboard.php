@@ -56,11 +56,15 @@ class Dashboard extends CI_Controller
     }
     // tampung ke hasil araay
     usort($lowongan, function ($a, $b) {
-      return strcmp($b->score, $a->score);
+      return strcmp($a->score, $b->score);
     });
+    foreach ($lowongan as $key => $l) {
+      # code...
+      echo "$l->score, ";
+    }
 
     // print_r($lowongan);
-    $data['lowongan'] = array_slice($lowongan, 0, 20);
+    $data['lowongan'] = $lowongan;
 
     $data['kategori'] = $this->MKategori->get();
 
