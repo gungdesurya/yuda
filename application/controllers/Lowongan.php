@@ -20,7 +20,7 @@ class Lowongan extends CI_Controller
     $data['param'] = new stdClass();
     $nama = $data['param']->nama = $this->input->get('nama');
     $kategori = $data['param']->kategori = $this->input->get('kategori');
-    $data['lowongan'] = $this->MLowongan->getLowongan($nama, $kategori);
+    $data['lowongan'] = $this->MLowongan->getLowongan($kategori);
     $data['kategori'] = $this->MKategori->get();
 
     $this->load->view('header', $data);
@@ -63,6 +63,16 @@ class Lowongan extends CI_Controller
     for ($i = 22; $i < 5060; $i++) {
       $param = new stdClass();
       $param->pengalaman_kerja = rand(1, 5);
+      $this->db->where('id', $i);
+      $this->db->update('lowongan', $param);
+    }
+  }
+
+  public function generate_min_usia()
+  {
+    for ($i = 22; $i < 5060; $i++) {
+      $param = new stdClass();
+      $param->min_usia = rand(22, 30);
       $this->db->where('id', $i);
       $this->db->update('lowongan', $param);
     }

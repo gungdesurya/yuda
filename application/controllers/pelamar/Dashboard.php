@@ -21,7 +21,15 @@ class Dashboard extends CI_Controller
     $pelamar = $this->MPelamar->getOne($this->session->userdata('id'));
     $pendidikanMinPelamar = $this->getPendidikanMinPelamar($pelamar->tahun);
     // get semua lowongan
-    $lowongan = $this->MLowongan->getLowongan('', '', $pelamar->jk, $pendidikanMinPelamar);
+
+    // find pelamar age
+    $birthDate = $pelamar->taggallahir;
+    $birthDate = explode("-", $birthDate);
+    $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
+      ? ((date("Y") - $birthDate[0]) - 1)
+      : (date("Y") - $birthDate[0]));
+
+    $lowongan = $this->MLowongan->getLowongan('', $pelamar->jk, $pendidikanMinPelamar, $age);
 
     $rangeGaji = [null, "0 - 1000000", "1000000 - 2500000", "2500000 - 5000000", "5000000 - 10000000"];
 
@@ -58,12 +66,10 @@ class Dashboard extends CI_Controller
     usort($lowongan, function ($a, $b) {
       return strcmp($a->score, $b->score);
     });
-    foreach ($lowongan as $key => $l) {
-      # code...
-      echo "$l->score, ";
-    }
-
-    // print_r($lowongan);
+    // foreach ($lowongan as $key => $l) {
+    //   echo "$l->score, ";
+    // }
+    
     $data['lowongan'] = $lowongan;
 
     $data['kategori'] = $this->MKategori->get();

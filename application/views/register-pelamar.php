@@ -14,22 +14,22 @@
       <div id="test1" class="col s12" style="padding: 24px">
         <form action="#" class="row" id="form1" enctype="multipart/form-data" method="post" name="form1">
           <div class="input-field col s12">
-            <input id="email" type="email" name="email" required>
+            <input id="email" type="email" name="email" required value="gungde.surya@gmail.com">
             <label for="email">Email</label>
           </div>
 
           <div class="input-field col s12 m6">
-            <input id="password" type="password" name="password" required>
+            <input id="password" type="password" name="password" required value="123123">
             <label for="password">Password</label>
           </div>
 
           <div class="input-field col s12 m6">
-            <input id="confirm_password" type="password" name="confirm_password" required>
+            <input id="confirm_password" type="password" name="confirm_password" required value="123123">
             <label for="confirm_password">Ulangi Password</label>
           </div>
 
           <div class="input-field col s12">
-            <input id="nomor_hp" type="text" name="nomor_hp" required>
+            <input id="nomor_hp" type="text" name="nomor_hp" required value="0812342345">
             <label for="nomor_hp">Nomor HP</label>
           </div>
 
@@ -41,12 +41,12 @@
           <br> -->
 
           <div class="input-field col s12 m6">
-            <input id="nama" type="text" name="nama" required>
+            <input id="nama" type="text" name="nama" required value="gungde surya">
             <label for="nama">Nama</label>
           </div>
 
           <div class="input-field col s12 m6">
-            <input id="nomor_ktp" type="text" name="nomor_ktp" required>
+            <input id="nomor_ktp" type="text" name="nomor_ktp" required value="28391823190283">
             <label for="nomor_ktp">Nomor KTP</label>
           </div>
 
@@ -63,7 +63,7 @@
           </div>
 
           <div class="input-field col s12 m6">
-            <input id="tanggal_lahir" type="date" name="tanggal_lahir" required>
+            <input id="tanggal_lahir" type="date" name="tanggal_lahir" required value="1995-11-20">
             <label for="tanggal_lahir">Tanggal Lahir</label>
           </div>
 
@@ -83,7 +83,7 @@
           </div>
 
           <div class="input-field col s12 m12">
-            <textarea id="alamat" name="alamat" class="materialize-textarea" required></textarea>
+            <textarea id="alamat" name="alamat" class="materialize-textarea" required>Jalan Blambangan</textarea>
             <label for="alamat">Alamat</label>
           </div>
 

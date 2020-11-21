@@ -101,9 +101,10 @@ class MLowongan extends CI_Model
       ->result();
   }
 
-  public function getLowongan($nama = '', $kategori = '', $jk = '', $pendidikanMin = '')
+  public function getLowongan($kategori = '', $jk = '', $pendidikanMin = '', $minUsia = 0)
   {
-    $where = "low_jurusan like '%$nama%' AND low_tanggal_berakhir >= '2020-01-01'";
+    // $where = "low_jurusan like '%$nama%' AND low_tanggal_berakhir >= '2020-01-01' AND min_usia >= $minUsia";
+    $where = "low_tanggal_berakhir >= '2020-01-01' AND min_usia >= $minUsia";
     // $where = "low_jurusan like '%$nama%' AND low_tanggal_berakhir >= CURRENT_TIMESTAMP()";
     if ($kategori != '') $where .= " AND kategori = '$kategori'";
 

@@ -5,7 +5,7 @@
     <div class="card-content">
       <form action="<?= site_url('lowongan') ?>" method="get" name="search-form">
         <div class="row" style="margin-bottom: 0">
-          <div class="input-field col s12 m4">
+          <div class="input-field col s12 m10">
             <select name="kategori" id="kategori_pekerjaan">
               <option value="" selected>Select All</option>
               <?php foreach ($kategori as $i => $k) : ?>
@@ -14,10 +14,10 @@
             </select>
             <label for="bidang_perusahaan">Kategori</label>
           </div>
-          <div class="input-field col s12 m6">
+          <!-- <div class="input-field col s12 m6">
             <input placeholder="Cari..." id="first_name" type="text" class="validate" name="nama" value="<?= $param->nama ?>">
             <label for="first_name">Cari</label>
-          </div>
+          </div> -->
           <div class="input-field col s12 m2">
             <button type="submit" class="waves-effect waves-light btn blue">Cari</button>
           </div>
